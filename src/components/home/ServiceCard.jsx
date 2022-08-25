@@ -26,8 +26,11 @@ let ServiceCard = () => {
                             so If you have any project to build and want to hire someone to get project done <br /> I'm here for that.
                         </p>
                     </div>
-                    <button className="w-28 h-10 rounded-3xl bg-slate-600
-                                 hover:bg-slate-700 text-white">Contact me</button>
+                    <a href="/">
+                        <button className="w-28 h-10 rounded-3xl bg-slate-600 hover:bg-slate-700 text-white">
+                            Checkout
+                        </button>
+                    </a>
                 </div>
                 <div className='border border-gray-500 w-4/5 h-96 sm:w-96 sm:h-96 rounded-xl flex flex-col justify-evenly items-center'>
                     <div className='w-min border border-gray-500 p-3 rounded-full'>
@@ -41,9 +44,11 @@ let ServiceCard = () => {
                             I also write Blogs sometimes on my achievements that can help people in achieving what I have achieved. If you have not checked out so Check it out Now.
                         </p>
                     </div>
-                    <button className="w-28 h-10 rounded-3xl bg-slate-600
-                                 hover:bg-slate-700 text-white">Check out
-                    </button>
+                    <a href="/">
+                        <button className="w-28 h-10 rounded-3xl bg-slate-600 hover:bg-slate-700 text-white">
+                            Checkout
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

@@ -21,9 +21,11 @@ let WelcomeCard = ({ handleSkillSection }) => {
                     </p>
                 </div>
                 <div className=" h-1/4 w-11/12 flex justify-start items-center space-x-3.5">
-                    <button className="w-20 h-7 text-sm sm:text-base sm:w-24 sm:h-10 rounded-3xl bg-slate-600
+                    <a href="/">
+                        <button className="w-20 h-7 text-sm sm:text-base sm:w-24 sm:h-10 rounded-3xl bg-slate-600
                          hover:bg-slate-700 text-white"
-                    >Hire me</button>
+                        >Hire me</button>
+                    </a>
                     <button className="w-20 h-7 text-sm sm:text-base sm:w-24 sm:h-10 rounded-3xl bg-white text-black
                          hover:bg-slate-700 hover:text-white  block lg:hidden"
                         onClick={handleSkillSection}
