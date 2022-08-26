@@ -32,7 +32,7 @@ class Navbar extends React.Component {
 
     render() {
         return (
-            <nav className={((this.state.isDisplaySmall && this.state.isNavClosed) ? "basis-9" : "basis-20 flex ") + " h-screen z-10"}>
+            <nav className={((this.state.isDisplaySmall && this.state.isNavClosed) ? "basis-9" : "basis-20 flex shrink-0") + " h-screen z-10"}>
                 <div className={(!this.state.isDisplaySmall && "hidden") + (this.state.isNavClosed ? " basis-1/4 pl-3" : " basis-0") +
                     " bg-transparent"}>
                     <button className=" bg-slate-600 h-16 rounded-l-md" onClick={this.handleNavbar}>

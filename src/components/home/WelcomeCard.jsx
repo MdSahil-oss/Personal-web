@@ -27,7 +27,7 @@ let WelcomeCard = ({ handleSkillSection }) => {
                         >Hire me</button>
                     </a>
                     <button className="w-20 h-7 text-sm sm:text-base sm:w-24 sm:h-10 rounded-3xl bg-white text-black
-                         hover:bg-slate-700 hover:text-white  block lg:hidden"
+                         hover:bg-slate-700 hover:text-white  block xl:hidden"
                         onClick={handleSkillSection}
                     >skills</button>
                 </div>
