@@ -3,7 +3,7 @@ import { BsTwitter, BsLinkedin, BsGithub } from "react-icons/bs"
 
 let ProfileCard = () => {
     return (
-        <div className="border w-full h-auto flex flex-col space-y-1 py-2 items-center">
+        <div className=" w-full h-auto flex flex-col space-y-1 py-2 items-center">
             <div className='w-fit h-fit'>
                 <img className='w-44 h-44 rounded-full' src={profilePhoto} alt="no profile" />
             </div>
@@ -48,6 +48,7 @@ let ProfileCard = () => {
                         <p>New Delhi, India</p>
                     </div>
                 </div>
+                <hr />
             </div>
         </div>
     )

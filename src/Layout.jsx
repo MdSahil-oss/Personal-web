@@ -10,7 +10,7 @@ const Layout = () => {
   }
 
   return (
-    <div id="main-container" className={"border border-green-500 flex flex-row-reverse dark:text-white" + (isDark && " bg-slate-900")}>
+    <div id="main-container" className={"flex flex-row-reverse dark:text-white" + (isDark && " bg-slate-900")}>
       <Navbar handleDarkmode={handleDarkmode} />
       <Outlet isDark={isDark}/>
     </div>
