@@ -4,7 +4,7 @@ import ProjectsCard from "./ProjectsCard";
 
 let HomeSection = ({ handleSkillSection }) => {
     return (
-        <div id="home-right-container" className="basis-full overflow-y-scroll space-y-4" >
+        <div className="custom-scrolling-container basis-full overflow-y-scroll space-y-4" >
             <WelcomeCard handleSkillSection={handleSkillSection} />
             <ProjectsCard />
             <ServiceCard />

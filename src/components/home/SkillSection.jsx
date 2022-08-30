@@ -4,8 +4,8 @@ import SkillsCard from './SkillsCard'
 
 let SkillSection = ({ handleSkillSection, isSkillOpened }) => {
     return (
-        <div id="home-left-container" className={
-            "bg-slate-600 text-white xl:basis-4/12 xl:block xl:static absolute h-screen w-80 sm:w-96 overflow-y-scroll xl:overflow-y-scroll"
+        <div className={
+            "custom-scrolling-container bg-slate-600 text-white xl:basis-4/12 xl:block xl:static absolute h-screen w-80 sm:w-96 overflow-y-scroll xl:overflow-y-scroll"
             + (!isSkillOpened && " hidden")
         } >
             <div>

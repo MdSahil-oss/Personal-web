@@ -13,7 +13,6 @@ let WebProjects = () => {
                 <div className="border rounded-sm w-72 h-64 my-3 mx-4"></div>
                 <div className="border rounded-sm w-72 h-64 my-3 mx-4"></div>
                 <div className="border rounded-sm w-72 h-64 my-3 mx-4"></div>
-
             </div>
         </div>
     )

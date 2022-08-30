@@ -16,20 +16,11 @@ code {
     monospace;
 }
 
-#home-left-container::-webkit-scrollbar {
+.custom-scrolling-container::-webkit-scrollbar {
   display: none;
 }
 
-#home-left-container {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-#home-right-container::-webkit-scrollbar {
-  display: none;
-}
-
-#home-right-container {
+.custom-scrolling-container {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
