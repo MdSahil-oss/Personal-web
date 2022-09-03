@@ -1,18 +1,12 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
-import { useState } from "react";
+// import { useState, useEffect } from "react";
 
 const Layout = () => {
-  let [isDark, setDark] = useState(false);
-
-  let handleDarkmode = () => {
-    setDark(!isDark);
-  }
-
   return (
-    <div id="main-container" className={"flex flex-row-reverse dark:text-white" + (isDark && " bg-slate-900")}>
-      <Navbar handleDarkmode={handleDarkmode} />
-      <Outlet isDark={isDark}/>
+    <div id="main-container" className="flex flex-row-reverse dark:text-white dark:bg-slate-900">
+      <Navbar />
+      <Outlet />
     </div>
   )
 };

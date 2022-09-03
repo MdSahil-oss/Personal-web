@@ -84,7 +84,7 @@ let SkillsCard = () => {
                     </div>
                     <div className="flex space-x-2">
                         <BsExclude />
-                        <p>Linux, Node.js, Express.js</p>
+                        <p>Linux, Node.js, Express.js, PostgreSQL</p>
                     </div>
                     <div className="flex space-x-2">
                         <BsExclude />

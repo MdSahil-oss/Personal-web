@@ -25,7 +25,6 @@ class Home extends React.Component {
     }
 
     render() {
-        console.log(this.props.isDark)
         return (
             <div id="home-container" className="flex flex-row sm:basis-full sm:static absolute w-screen h-screen">
                 <SkillSection
