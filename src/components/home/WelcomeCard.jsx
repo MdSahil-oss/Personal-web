@@ -2,7 +2,7 @@ import buildingBlock from '../../images/BuildingBlocks.png'
 
 let WelcomeCard = ({ handleSkillSection }) => {
     return (
-        <div className={"border border-slate-400 rounded-xl h-70 sm:h-80 w-11/12 m-auto flex dark:bg-slate-800 bg-slate-200 py-2"}>
+        <div className={" rounded-xl h-70 sm:h-80 w-11/12 m-auto flex dark:bg-slate-800 bg-slate-200 py-2"}>
             <div className=" h-full w-4/6 pl-10 space-y-5 sm:space-y-1">
                 <div className=" h-3/4 w-11/12 space-y-1 md:space-y-2.5 text-white">
                     <div className="h-12  text-slate-700 text-2xl md:text-4xl font-extrabold ">

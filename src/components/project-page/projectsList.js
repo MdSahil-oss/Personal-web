@@ -13,13 +13,19 @@ export const projectsList = [
         "name": "InfoAbout.me",
         "icon": <BsCodeSlash size={64} />,
         "logo": undefined,
-        "usedTechnologies": ["HTML, CSS, Javascript", "Bootstrap", "React, Appwrite as backend, Express"],
+        "usedTechnologies": ["HTML, CSS, Javascript", "Bootstrap", "React, Appwrite as backend, Express.js"],
     },
     {
         "name": "Personal Website",
         "icon": <BsCodeSlash size={64} />,
         "logo": undefined,
         "usedTechnologies": ["HTML, CSS, Javascript", "Tailwind CSS", "React"],
+    },
+    {
+        "name": "Recipe App",
+        "icon": <BsCodeSlash size={64} />,
+        "logo": undefined,
+        "usedTechnologies": ["HTML, CSS, Javascript", "Semantic UI", "React.js, Express.js, Postgresql"],
     },
     {
         "name": "Ableton-clone",

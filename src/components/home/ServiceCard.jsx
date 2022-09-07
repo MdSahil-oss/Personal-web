@@ -2,7 +2,7 @@ import { BsCodeSlash, BsBook } from "react-icons/bs"
 
 let ServiceCard = () => {
     return (
-        <div className="border border-slate-400 h-auto w-11/12 m-auto space-y-2 rounded-xl text-white bg-slate-200 dark:bg-slate-800">
+        <div className="h-auto w-11/12 m-auto space-y-2 rounded-xl text-white bg-slate-200 dark:bg-slate-800">
             <div className='text-center space-y-1'>
                 <h2 className='text:xl md:text-2xl font-bold'>
                     My Services

@@ -22,13 +22,17 @@ class Contact extends React.Component {
                             <label htmlFor="message">Message</label>
                             <textarea id="message" className=" w-4/5 rounded-xl h-32 " type="text" />
                         </div>
-                        <div className="w-fit space-x-2 pl-12 flex">
-                            <button className="hover:bg-slate-900 text-white border border-slate-700 bg-slate-700  hover:text-slate-700 w-32 h-9 rounded-2xl">
-                                Submit
-                            </button>
-                            <button className=" border border-red-700 w-32 h-9 rounded-3xl bg-red-700 text-black hover:bg-slate-900 hover:text-red-700">Cancel</button>
-                        </div>
                     </form>
+                    <div className="m-auto w-fit space-x-2 pl-12 flex">
+                        <button className="hover:bg-slate-900 text-white border border-slate-700 bg-slate-700  hover:text-slate-700 w-32 h-9 rounded-2xl">
+                            Submit
+                        </button>
+                        <a href="/">
+                            <button className=" border border-red-700 w-32 h-9 rounded-3xl bg-red-700 text-black hover:bg-slate-900 hover:text-red-700">
+                                Cancel
+                            </button>
+                        </a>
+                    </div>
                 </div>
             </div>
         )
