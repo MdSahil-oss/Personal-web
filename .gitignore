@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+/Express/node_modules
+/Express/.env
 
 # testing
 /coverage
