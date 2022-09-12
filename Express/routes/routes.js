@@ -2,6 +2,16 @@ const express = require('express');
 const { model } = require('mongoose');
 const router = express.Router();
 const Model = require('../model/model')
+require('dotenv').config()
+
+router.post('/login', (req, res) => {
+    console.log(req.body.userId, req.body.password)
+    if(process.env.USER_ID === req.body.userId && process.env.PASSWORD === req.body.password) {
+        res.status(200).json({"isLoggedin": true})
+    }
+    res.status(400).json({"isLoggedin": false})
+})
+
 //Post Method
 router.post('/post', async (req, res) => {
     const data = new Model({
@@ -19,12 +29,6 @@ router.post('/post', async (req, res) => {
     catch (error) {
         res.status(400).json({ message: error.message })
     }
-    // console.log(req.body)
-    // res.send("request recieved")
-})
-
-router.post('/login', (req, res) => {
-    console.log(req.body.userId, req.body.password)
 })
 
 //Get all Method
