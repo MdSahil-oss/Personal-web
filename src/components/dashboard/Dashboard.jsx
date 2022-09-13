@@ -1,5 +1,6 @@
 import React from "react";
 import Login from "./Login";
+import DashboardContents from "./DashboardContents";
 
 class Dashboard extends React.Component {
     // constructor(props) {
@@ -10,8 +11,7 @@ class Dashboard extends React.Component {
     render() {
         return (
             localStorage.getItem("isLoggedIn") && localStorage.getItem("isLoggedIn") === "true" ?
-            <div>this is dashboard</div> :
-            <Login />
+                <DashboardContents /> : <Login />
         )
     }
 }

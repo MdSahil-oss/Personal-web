@@ -14,7 +14,7 @@ let ProjectsCard = () => {
             </div>
             <div className='flex flex-col md:flex-row flex-wrap items-center justify-evenly py-5 space-y-2'>
                 <a href="/">
-                    <div className="rounded-md w-60 h-60 my-3 mx-4 text-white bg-slate-700 hover:bg-slate-300 hover:text-slate-900 cursor-pointer flex flex-col items-center space-y-2 pt-1">
+                    <div className="rounded-md w-60 h-60 my-3 mx-4 text-white bg-slate-700 hover:bg-slate-400 hover:text-slate-900 cursor-pointer flex flex-col items-center space-y-2 pt-1">
                         <div className="p-2 text-slate-900 bg-white rounded-full h-fit w-fit">
                             <BsCodeSlash size={64} />
                         </div>
@@ -31,7 +31,7 @@ let ProjectsCard = () => {
                     </div>
                 </a>
                 <a href="/">
-                    <div className="rounded-md w-60 h-60 my-3 mx-4 text-white bg-slate-700 hover:bg-slate-300 hover:text-slate-900 cursor-pointer flex flex-col items-center space-y-2 pt-1">
+                    <div className="rounded-md w-60 h-60 my-3 mx-4 text-white bg-slate-700 hover:bg-slate-400 hover:text-slate-900 cursor-pointer flex flex-col items-center space-y-2 pt-1">
                         <div className="p-2 text-slate-900 bg-white rounded-full h-fit w-fit">
                             <BsCodeSlash size={64} />
                         </div>
@@ -47,7 +47,7 @@ let ProjectsCard = () => {
                     </div>
                 </a>
                 <a href="/">
-                    <div className="rounded-md w-60 h-60 my-3 mx-4 text-white bg-slate-700 hover:bg-slate-300 hover:text-slate-900 cursor-pointer flex flex-col items-center space-y-2 pt-1">
+                    <div className="rounded-md w-60 h-60 my-3 mx-4 text-white bg-slate-700 hover:bg-slate-400 hover:text-slate-900 cursor-pointer flex flex-col items-center space-y-2 pt-1">
                         <div className="p-2 text-slate-900 bg-white rounded-full h-fit w-fit">
                             <BsCodeSlash size={64} />
                         </div>

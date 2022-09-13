@@ -21,7 +21,6 @@ class Login extends React.Component {
             if(res.ok) {
                 return res.json();
             }
-
             throw res;
         })
         .then(jsonData => {
@@ -32,7 +31,8 @@ class Login extends React.Component {
             console.error("Error found", err);
         })
         .finally(() => {
-            console.log("fetched data successfully");
+            // eslint-disable-next-line no-restricted-globals
+            location.reload()
         })
     }
 

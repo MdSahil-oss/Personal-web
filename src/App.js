@@ -12,7 +12,7 @@ import Projects from './components/project-page/Projects';
 import Academy from './components/academy-page/Academy';
 import Contact from './components/contact/Contact';
 import Dashboard from './components/dashboard/Dashboard';
-import ProjectAdd from './components/dashboard/ProjectAdd';
+import ManageProjects from './components/dashboard/ManageProjects';
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
           <Route path="/work" element={<Work />} />
           <Route path="/academy" element={<Academy />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path='/dashboard/project' element={<ProjectAdd />} />
+          <Route path='/dashboard/postproject' element={<ManageProjects />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path="*" element={<NoPage />} />
         </Route>

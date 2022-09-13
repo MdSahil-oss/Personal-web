@@ -3,7 +3,7 @@ import { projectsList } from './projectsList'
 let ProjectsBlocks = () => {
     const projectsBlocks = projectsList.map((projectMetadata) => {
         return (
-            <div className="rounded-xl w-72 h-64 my-3 mx-4 text-white bg-slate-700 hover:bg-slate-300 hover:text-slate-900 cursor-pointer flex flex-col items-center space-y-2 pt-1">
+            <div className="rounded-xl w-72 h-64 my-3 mx-4 text-white bg-slate-700 hover:bg-slate-400 hover:text-slate-900 cursor-pointer flex flex-col items-center space-y-2 pt-1">
                 <div className=" h-fit w-fit">
                     {projectMetadata["icon"] ?
                         <div className='border rounded-full flex justify-center items-center w-24 h-24 bg-white text-slate-900'>
