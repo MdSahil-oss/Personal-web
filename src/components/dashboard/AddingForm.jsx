@@ -27,6 +27,7 @@ const AddingForm = ({ onCloseAddingEditing }) => {
                                     } else {
                                         setTechnology(technologies + ', ' + document.getElementById("enteredTechnology").value)
                                     }
+                                    document.getElementById("enteredTechnology").value = ""
                                 }} className=" border border-green-400 w-16 h-9 rounded-3xl bg-green-400 text-black hover:bg-slate-900 hover:text-green-400">+</button>
                             </div>
                         </div>
@@ -43,7 +44,7 @@ const AddingForm = ({ onCloseAddingEditing }) => {
                 </form>
                 <div className="m-auto w-fit space-x-2 pl-12 flex">
                     <button className="hover:bg-slate-900 text-white border border-slate-700 bg-slate-700  hover:text-slate-700 w-32 h-9 rounded-2xl">
-                        Submit
+                        Push
                     </button>
                     <button onClick={onCloseAddingEditing} className=" border border-red-700 w-32 h-9 rounded-3xl bg-red-700 text-black hover:bg-slate-900 hover:text-red-700">
                         Cancel

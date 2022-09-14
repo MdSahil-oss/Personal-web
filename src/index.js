@@ -3,11 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from "react-redux";
+// import {configureStore} from "@reduxjs/toolkit"
+import {createStore, applyMiddleware } from "redux";
+import api from "./middleware/api";
+import rootReducer from "./reducers/index"
+
+// const store = configureStore(rootReducer, applyMiddleware(api))
+const store = createStore(rootReducer, {}, applyMiddleware(api));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 

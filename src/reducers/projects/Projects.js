@@ -1,4 +1,4 @@
-import { GET_PROJECTS, GET_PROJECT, PATCH_PROJECT, POST_PROJECT, DELETE_PROJECT } from '../../constants/Index'
+import { GET_PROJECTS, GET_PROJECT, PATCH_PROJECT, POST_PROJECT, DELETE_PROJECT } from '../../constants/Contants'
 
 const initialState = {
     projects: [],
@@ -29,7 +29,7 @@ function getRequestKey(actionType) {
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default function (state = initialState, action = {}) {
+export default function projects(state = initialState, action = {}) {
     switch (action.type) {
         case `${GET_PROJECTS}_PENDING`:
         case `${GET_PROJECT}_PENDING`:
