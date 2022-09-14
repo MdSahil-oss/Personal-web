@@ -1,6 +1,7 @@
 import React from "react";
 import AddingForm from "./AddingForm";
 import SelectingPage from "./SelectingPage";
+import EditProjects from "./EditProjects";
 
 class ManageProjects extends React.Component {
     constructor(props) {
@@ -11,8 +12,8 @@ class ManageProjects extends React.Component {
         this.onCloseAddingEditing = this.onCloseAddingEditing.bind(this);
         this.state = {
             isLoggedIn: false,
-            isAdding: false,
-            isEditing: false
+            isAddingOn: false,
+            isEditingOn: false
         }
     }
 
@@ -33,34 +34,46 @@ class ManageProjects extends React.Component {
     }
 
     onAdd() {
-        console.log("editing off");
-        console.log("adding On");
+        this.setState({
+            isAddingOn: true,
+            isEditingOn: false
+        })
     }
 
     onEdit() {
         console.log("Adding Off");
         console.log("Editing On");
+        this.setState({
+            isAddingOn: false,
+            isEditingOn: true
+        })
     }
 
     onCloseAddingEditing() {
-        console.log("Closing adding and editing");
+        this.setState({
+            isAddingOn: false,
+            isEditingOn: false
+        })
     }
 
     render() {
         return (
-            <div className="custom-scrolling-container p-1 w-screen h-screen flex flex-col items-start sm:static absolute">
-                <div className="space-x-1">
-                    <button onClick={this.handleSignout} className=" border border-red-700 w-24 h-9 rounded-lg bg-red-700 text-black hover:bg-slate-900 hover:text-red-700">
+            <div className=" custom-scrolling-container p-1 w-screen h-screen flex flex-col items-start sm:static absolute">
+                <div className=" space-x-1">
+                    <button onClick={this.handleSignout} className=" border border-red-500 w-24 h-9 rounded-lg bg-red-500 text-black hover:bg-slate-900 hover:text-red-500">
                         Sign out
                     </button>
                     <a href="/dashboard">
-                        <button className=" border border-sky-700 w-24 h-9 rounded-lg bg-sky-700 text-black hover:bg-slate-900 hover:text-sky-700">
+                        <button className=" border border-sky-400 w-24 h-9 rounded-lg bg-sky-400 text-black hover:bg-slate-900 hover:text-sky-400">
                             Dashboard
                         </button>
                     </a>
                 </div>
-                {(this.state.isAdding || this.state.isEditing) ? (this.state.isAdding ?
-                    <AddingForm onCloseAddingEditing={this.onCloseAddingEditing} /> : <div></div>) :
+                {(this.state.isAddingOn || this.state.isEditingOn) ?
+                    (this.state.isAddingOn ?
+                        <AddingForm onCloseAddingEditing={this.onCloseAddingEditing} /> :
+                        <EditProjects onCloseAddingEditing={this.onCloseAddingEditing}
+                        />) :
                     <SelectingPage onAdd={this.onAdd} onEdit={this.onEdit} />}
             </div>
         )

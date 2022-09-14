@@ -13,7 +13,7 @@ let DashboardContents = () => {
                 Sign out
             </button>
             <div className=" w-full h-screen md:h-96 flex md:flex-row flex-col items-center justify-evenly text-center">
-                <a href="/" className="hover:bg-slate-400 hover:text-black bg-slate-700 md:w-1/3 lg:w-1/4 h-2/5 md:h-3/4 rounded-2xl flex flex-col pt-5 items-center">
+                <a href="/" className="hover:bg-sky-400 hover:text-black bg-slate-700 md:w-1/3 lg:w-1/4 h-2/5 md:h-3/4 rounded-2xl flex flex-col pt-5 items-center">
                     <div className="">
                         <FiUpload size={128} />
                     </div>
@@ -22,7 +22,7 @@ let DashboardContents = () => {
                         <p className=" text-lg ">Upload your newly created blog</p>
                     </div>
                 </a>
-                <a href="/dashboard/postproject" className="bg-slate-700 hover:bg-slate-400 hover:text-black md:w-1/3 lg:w-1/4 h-2/5 md:h-3/4 rounded-2xl flex flex-col pt-5 items-center">
+                <a href="/dashboard/postproject" className="bg-slate-700 hover:bg-sky-400 hover:text-black md:w-1/3 lg:w-1/4 h-2/5 md:h-3/4 rounded-2xl flex flex-col pt-5 items-center">
                     <div className="">
                         <FiUpload size={128} />
                     </div>
