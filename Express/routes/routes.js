@@ -1,5 +1,5 @@
 const express = require('express');
-const { model } = require('mongoose');
+// const { model } = require('mongoose');
 const router = express.Router();
 const Model = require('../model/model')
 require('dotenv').config()
@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
     try {
         const data = await Model.find();
         console.log(data)
-        res.json(data);
+        res.json({data});
     }
     catch (error) {
         res.status(500).json({ message: error.message });

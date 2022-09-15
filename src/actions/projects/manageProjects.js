@@ -1,11 +1,12 @@
 import { GET_PROJECTS, GET_PROJECT, PATCH_PROJECT, POST_PROJECT, DELETE_PROJECT } from "../../constants/Contants"
 
 export const getProjects = (url) => {
+    console.log("passed URL to getProject() is ", url)
     return {
         type: GET_PROJECTS,
         request: {
             op: 'get',
-            path: `${url}/`
+            path: `${url}`
         }
     }
 }
@@ -15,7 +16,7 @@ export const getProject = (url, id) => {
         type: GET_PROJECT,
         request: {
             op: 'get',
-            path: `${url}/getOne`,
+            path: `${url}`,
             data: { id }
         }
     }
@@ -26,7 +27,7 @@ export const postProject = (url) => {
         type: POST_PROJECT,
         request: {
             op: 'post',
-            path: `${url}/post`
+            path: `${url}`
         }
     }
 }
@@ -36,7 +37,7 @@ export const patchProject = (url, id) => {
         type: PATCH_PROJECT,
         request: {
             op: 'patch',
-            path: `${url}/update`,
+            path: `${url}/api/update`,
             id: { id },
         }
     }
@@ -47,7 +48,7 @@ export const deleteProject = (url, id) => {
         type: DELETE_PROJECT,
         request: {
             op: 'delete',
-            path: `${url}/delete`,
+            path: `${url}/api/delete`,
             id: { id },
         }
     }

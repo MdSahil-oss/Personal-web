@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
-import blogs from './blogs/blogs';
-import projects from './projects/projects';
+// import blogs from './blogs/blogs';
+import projects from './projects';
 
-export default combineReducers({
-    blogs,
+let rootReducer =  combineReducers({
     projects
 });
+
+export default rootReducer
