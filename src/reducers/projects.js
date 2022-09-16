@@ -7,11 +7,11 @@ const initialState = {
         loaded: false,
         loading: false,
     },
-    // post: {
-    //     error: null,
-    //     loaded: false,
-    //     loading: false,
-    // },
+    post: {
+        error: null,
+        loaded: false,
+        loading: false,
+    },
     // patch: {
     //     error: null,
     //     loaded: false,
@@ -66,15 +66,15 @@ const projects = (state = initialState, action = {}) => {
                     error: action.error,
                 },
             };
-        // case `${POST_PROJECT}_FAIL`:
-        //     return {
-        //         ...state,
-        //         [getRequestKey(action.type)]: {
-        //             loading: false,
-        //             loaded: false,
-        //             error: action.error,
-        //         },
-        //     };
+        case `${POST_PROJECT}_FAIL`:
+            return {
+                ...state,
+                [getRequestKey(action.type)]: {
+                    loading: false,
+                    loaded: false,
+                    error: action.error,
+                },
+            };
         default:
             return state;
     }

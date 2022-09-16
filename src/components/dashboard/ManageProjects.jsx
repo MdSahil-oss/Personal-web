@@ -1,7 +1,7 @@
 import React from "react";
-import AddingForm from "./AddingForm";
 import SelectingPage from "./SelectingPage";
 import EditProjects from "./EditProjects";
+import AddProject from "./AddProject";
 
 class ManageProjects extends React.Component {
     constructor(props) {
@@ -71,7 +71,7 @@ class ManageProjects extends React.Component {
                 </div>
                 {(this.state.isAddingOn || this.state.isEditingOn) ?
                     (this.state.isAddingOn ?
-                        <AddingForm onCloseAddingEditing={this.onCloseAddingEditing} /> :
+                        <AddProject onCloseAddingEditing={this.onCloseAddingEditing} /> :
                         <EditProjects onCloseAddingEditing={this.onCloseAddingEditing}
                         />) :
                     <SelectingPage onAdd={this.onAdd} onEdit={this.onEdit} />}

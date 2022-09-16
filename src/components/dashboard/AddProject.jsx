@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const AddingForm = ({ onCloseAddingEditing }) => {
+const AddProject = ({ onCloseAddingEditing }) => {
 
     let [technologies, setTechnology] = useState("")
 
@@ -55,4 +55,4 @@ const AddingForm = ({ onCloseAddingEditing }) => {
     )
 }
 
-export default AddingForm
+export default AddProject

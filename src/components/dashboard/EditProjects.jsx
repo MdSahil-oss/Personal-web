@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import { connect } from 'react-redux'
-import { getProjects } from '../../actions/projects/manageProjects'
+import { getProjects } from '../../actions/projects'
 import React, { useEffect, useState } from 'react';;
 
 let EditProjects = (props) => {

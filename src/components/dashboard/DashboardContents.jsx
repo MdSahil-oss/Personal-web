@@ -1,4 +1,3 @@
-import { FiUpload } from "react-icons/fi";
 import { FiSettings } from "react-icons/fi";
 
 let DashboardContents = () => {

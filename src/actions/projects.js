@@ -1,4 +1,4 @@
-import { GET_PROJECTS, GET_PROJECT, PATCH_PROJECT, POST_PROJECT, DELETE_PROJECT } from "../../constants/Contants"
+import { GET_PROJECTS, GET_PROJECT, PATCH_PROJECT, POST_PROJECT, DELETE_PROJECT } from "../constants/Contants"
 
 export const getProjects = (url) => {
     return {
@@ -22,12 +22,13 @@ export const getProject = (url, id) => {
     }
 }
 
-export const postProject = (url) => {
+export const postProject = (url, data) => {
     return {
         type: POST_PROJECT,
         request: {
             op: 'post',
-            path: `${url}`
+            path: `${url}`,
+            data: data
         }
     }
 }
