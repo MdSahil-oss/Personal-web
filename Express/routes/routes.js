@@ -13,10 +13,9 @@ router.post('/login', (req, res) => {
 })
 
 //Post Method
-router.post('/post', async (req, res) => {
+router.post('/project/post', async (req, res) => {
     const data = new Model({
         name: req.body.name,
-        desciption: req.body.description,
         usedTechnologies: req.body.usedTechnologies,
         icon: req.body.icon,
         logo: req.body.logo

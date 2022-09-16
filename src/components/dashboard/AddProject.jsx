@@ -1,6 +1,9 @@
 import { useState } from "react"
+import { connect } from "react-redux";
+import { postProject } from '../../actions/projects'
+import React from "react";
 
-const AddProject = ({ onCloseAddingEditing }) => {
+const AddProject = (props) => {
 
     let [technologies, setTechnology] = useState("");
 
@@ -11,18 +14,30 @@ const AddProject = ({ onCloseAddingEditing }) => {
         let iconName = document.getElementById("iconName").value;
         let mentionedTechnologies = mentionedTechnologiesString.split(', ');
         // console.log(name, logo, iconName);
-        try{
-            if(mentionedTechnologies.length < 3) {
+        try {
+            if (mentionedTechnologies.length < 3) {
                 throw new Error("usedTechnologies must be greater than or equal to 3 technologies");
             }
             else if (iconName !== "" && logo !== "") {
                 throw new Error("Only on of Logo and IconName field can be filled");
             }
+            let data = {
+                name: name,
+                mentionedTechnologies: mentionedTechnologies,
+                logo: logo,
+                iconName: iconName
+            }
+            props.postData('/api/project/post', data)
+            console.log(props.projects)
+            console.log("Your project has been submitted");
+            document.getElementById("mentionedTechnologies").innerText = ""
+            document.getElementById("name").value = "";
+            document.getElementById("logo").value = "";
+            document.getElementById("iconName").value = "";
         } catch (error) {
             console.error(error);
-        }
-        finally {
-            console.log("Your project has been submitted");
+        } finally {
+            console.info("Request has been sent")
         }
     }
 
@@ -68,7 +83,7 @@ const AddProject = ({ onCloseAddingEditing }) => {
                     <button onClick={handleSubmit} className="hover:bg-slate-900 text-white border border-slate-700 bg-slate-700  hover:text-slate-700 w-32 h-9 rounded-2xl">
                         Push
                     </button>
-                    <button onClick={onCloseAddingEditing} className=" border border-red-700 w-32 h-9 rounded-3xl bg-red-700 text-black hover:bg-slate-900 hover:text-red-700">
+                    <button onClick={props.onCloseAddingEditing} className=" border border-red-700 w-32 h-9 rounded-3xl bg-red-700 text-black hover:bg-slate-900 hover:text-red-700">
                         Cancel
                     </button>
                 </div>
@@ -77,4 +92,19 @@ const AddProject = ({ onCloseAddingEditing }) => {
     )
 }
 
-export default AddProject
+// Maps `state` to `props`:
+// These will be added as props to the component.
+function mapState(state) {
+    return { projects: state.projects.data }
+}
+
+// Maps `dispatch` to `props`:
+function mapDispatch(dispatch) {
+    return {
+        postData(url, data) {
+            dispatch(postProject(url, data))
+        }
+    }
+}
+
+export default connect(mapState, mapDispatch)(AddProject);

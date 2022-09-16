@@ -17,10 +17,6 @@ const dataSchema = new mongoose.Schema({
     usedTechnologies: {
         required: true,
         type: Array
-    },
-    desciption: {
-        required: true,
-        type: String
     }
 })
 
