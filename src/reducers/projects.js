@@ -1,27 +1,27 @@
 import { GET_PROJECTS, GET_PROJECT, PATCH_PROJECT, POST_PROJECT, DELETE_PROJECT } from '../constants/Contants'
 
 const initialState = {
-    projects: [],
+    data: [],
     get: {
         error: null,
         loaded: false,
         loading: false,
     },
-    post: {
-        error: null,
-        loaded: false,
-        loading: false,
-    },
-    patch: {
-        error: null,
-        loaded: false,
-        loading: false,
-    },
-    delete: {
-        error: null,
-        loaded: false,
-        loading: false,
-    },
+    // post: {
+    //     error: null,
+    //     loaded: false,
+    //     loading: false,
+    // },
+    // patch: {
+    //     error: null,
+    //     loaded: false,
+    //     loading: false,
+    // },
+    // delete: {
+    //     error: null,
+    //     loaded: false,
+    //     loading: false,
+    // },
 };
 
 function getRequestKey(actionType) {
@@ -48,7 +48,7 @@ const projects = (state = initialState, action = {}) => {
         case `${POST_PROJECT}_SUCCESS`:
             return {
                 ...state,
-                projects: action.projects,
+                data: action.data,
                 [getRequestKey(action.type)]: {
                     loading: false,
                     loaded: true,

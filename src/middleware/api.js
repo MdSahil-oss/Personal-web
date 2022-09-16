@@ -15,7 +15,7 @@ const loggerMiddleware = function (store) {
             });
 
             actionPromise.then(response => {
-                response.json().then((resJson) => next({ type: `${type}_SUCCESS` }));
+                response.json().then((data) => next({data, type: `${type}_SUCCESS` }));
             });
 
             return actionPromise;

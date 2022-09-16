@@ -1,4 +1,5 @@
 import { FiUpload } from "react-icons/fi";
+import { FiSettings } from "react-icons/fi";
 
 let DashboardContents = () => {
     let handleSignout = () => {
@@ -13,22 +14,22 @@ let DashboardContents = () => {
                 Sign out
             </button>
             <div className=" w-full h-screen md:h-96 flex md:flex-row flex-col items-center justify-evenly text-center">
-                <a href="/" className="hover:bg-sky-400 hover:text-black bg-slate-700 md:w-1/3 lg:w-1/4 h-2/5 md:h-3/4 rounded-2xl flex flex-col pt-5 items-center">
+                <a href="/" className="hover:bg-sky-400 hover:text-black space-y-3 bg-slate-700 md:w-1/3 lg:w-1/4 h-2/5 md:h-3/4 rounded-2xl flex flex-col pt-5 items-center">
                     <div className="">
-                        <FiUpload size={128} />
+                        <FiSettings size={128} />
                     </div>
                     <div className=" space-y-2">
-                        <h2 className=" text-2xl font-bold">Upload Blog</h2>
-                        <p className=" text-lg ">Upload your newly created blog</p>
+                        <h2 className=" text-2xl font-bold">Manage Blogs</h2>
+                        <p className=" text-lg ">Create, Delete, Edit, or Post your blogs</p>
                     </div>
                 </a>
-                <a href="/dashboard/postproject" className="bg-slate-700 hover:bg-sky-400 hover:text-black md:w-1/3 lg:w-1/4 h-2/5 md:h-3/4 rounded-2xl flex flex-col pt-5 items-center">
+                <a href="/dashboard/postproject" className="bg-slate-700 hover:bg-sky-400 hover:text-black space-y-3 md:w-1/3 lg:w-1/4 h-2/5 md:h-3/4 rounded-2xl flex flex-col pt-5 items-center">
                     <div className="">
-                        <FiUpload size={128} />
+                        <FiSettings size={128} />
                     </div>
                     <div className=" space-y-2">
-                        <h2 className=" text-2xl font-bold">Upload Project</h2>
-                        <p className=" text-lg ">Upload your newly created project</p>
+                        <h2 className=" text-2xl font-bold">Manage Projects</h2>
+                        <p className=" text-lg ">Create, Delete, Edit, or Post your projects</p>
                     </div>
                 </a>
             </div>

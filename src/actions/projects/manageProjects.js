@@ -1,7 +1,6 @@
 import { GET_PROJECTS, GET_PROJECT, PATCH_PROJECT, POST_PROJECT, DELETE_PROJECT } from "../../constants/Contants"
 
 export const getProjects = (url) => {
-    console.log("passed URL to getProject() is ", url)
     return {
         type: GET_PROJECTS,
         request: {
@@ -18,7 +17,8 @@ export const getProject = (url, id) => {
             op: 'get',
             path: `${url}`,
             data: { id }
-        }
+        },
+        projects: null
     }
 }
 
