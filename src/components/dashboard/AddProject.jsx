@@ -2,7 +2,29 @@ import { useState } from "react"
 
 const AddProject = ({ onCloseAddingEditing }) => {
 
-    let [technologies, setTechnology] = useState("")
+    let [technologies, setTechnology] = useState("");
+
+    let handleSubmit = () => {
+        let mentionedTechnologiesString = document.getElementById("mentionedTechnologies").innerText;
+        let name = document.getElementById("name").value;
+        let logo = document.getElementById("logo").value;
+        let iconName = document.getElementById("iconName").value;
+        let mentionedTechnologies = mentionedTechnologiesString.split(', ');
+        // console.log(name, logo, iconName);
+        try{
+            if(mentionedTechnologies.length < 3) {
+                throw new Error("usedTechnologies must be greater than or equal to 3 technologies");
+            }
+            else if (iconName !== "" && logo !== "") {
+                throw new Error("Only on of Logo and IconName field can be filled");
+            }
+        } catch (error) {
+            console.error(error);
+        }
+        finally {
+            console.log("Your project has been submitted");
+        }
+    }
 
     return (
         <div className=" custom-scrolling-container w-full sm:static absolute h-screen overflow-x-auto flex justify-center items-center">
@@ -31,7 +53,7 @@ const AddProject = ({ onCloseAddingEditing }) => {
                                 }} className=" border border-green-400 w-16 h-9 rounded-3xl bg-green-400 text-black hover:bg-slate-900 hover:text-green-400">+</button>
                             </div>
                         </div>
-                        {technologies === "" ? undefined : <div className="border w-full h-auto space-x-3 flex justify-between">{technologies}</div>}
+                        {technologies === "" ? undefined : <div id="mentionedTechnologies" className="border w-full h-auto space-x-3 flex justify-between">{technologies}</div>}
                         <div className="w-full space-x-3 flex justify-between">
                             <label htmlFor="iconName">IconName</label>
                             <input id="iconName" className="w-2/5 h-10 rounded-3xl text-center" type="text" />
@@ -43,7 +65,7 @@ const AddProject = ({ onCloseAddingEditing }) => {
                     </div>
                 </form>
                 <div className="m-auto w-fit space-x-2 pl-12 flex">
-                    <button className="hover:bg-slate-900 text-white border border-slate-700 bg-slate-700  hover:text-slate-700 w-32 h-9 rounded-2xl">
+                    <button onClick={handleSubmit} className="hover:bg-slate-900 text-white border border-slate-700 bg-slate-700  hover:text-slate-700 w-32 h-9 rounded-2xl">
                         Push
                     </button>
                     <button onClick={onCloseAddingEditing} className=" border border-red-700 w-32 h-9 rounded-3xl bg-red-700 text-black hover:bg-slate-900 hover:text-red-700">

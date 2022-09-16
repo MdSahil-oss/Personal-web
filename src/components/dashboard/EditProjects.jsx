@@ -17,7 +17,6 @@ let EditProjects = (props) => {
             setProjectsList(props.projects["data"])
         }
     }, [props.projects])
-    console.log(projectsList)
     const projectsBlocks = projectsList.map((projectMetadata) => {
         return (
             <div className="rounded-xl w-72 h-64 my-3 mx-4 text-white bg-slate-700 hover:bg-slate-400 hover:text-slate-900 cursor-pointer flex flex-col items-center space-y-2 pt-1">
