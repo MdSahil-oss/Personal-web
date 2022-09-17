@@ -26,7 +26,7 @@ export const postProject = (url, data) => {
     return {
         type: POST_PROJECT,
         request: {
-            op: 'post',
+            op: 'POST',
             path: `${url}`,
             data: data
         }

@@ -6,11 +6,10 @@ import React, { useEffect, useState } from 'react';;
 let EditProjects = (props) => {
     let [projectsList, setProjectsList] = useState([])
     useEffect(() => {
-        props.getData('/api/')
+        props.getData('/api/projects/getAll')
         if (props.projects["data"] !== undefined) {
             setProjectsList(props.projects["data"])
         }
-        // console.log("ran getProjects")
     }, [])
     useEffect(() => {
         if (props.projects["data"] !== undefined) {
@@ -53,7 +52,7 @@ let EditProjects = (props) => {
             {projectsBlocks}
             <div className="m-auto w-fit space-x-2 pl-12 flex">
                 <button onClick={props.onCloseAddingEditing} className=" border border-red-700 w-32 h-9 rounded-3xl bg-red-700 text-black hover:bg-slate-900 hover:text-red-700">
-                    Cancel
+                    Back
                 </button>
             </div>
         </>

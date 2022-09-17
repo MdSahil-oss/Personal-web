@@ -27,9 +27,7 @@ const AddProject = (props) => {
                 logo: logo,
                 iconName: iconName
             }
-            props.postData('/api/project/post', data)
-            console.log(props.projects)
-            console.log("Your project has been submitted");
+            props.postData('/api/projects/post', data)
             document.getElementById("mentionedTechnologies").innerText = ""
             document.getElementById("name").value = "";
             document.getElementById("logo").value = "";
@@ -84,7 +82,7 @@ const AddProject = (props) => {
                         Push
                     </button>
                     <button onClick={props.onCloseAddingEditing} className=" border border-red-700 w-32 h-9 rounded-3xl bg-red-700 text-black hover:bg-slate-900 hover:text-red-700">
-                        Cancel
+                        Back
                     </button>
                 </div>
             </div>

@@ -12,12 +12,16 @@ router.post('/login', (req, res) => {
     res.status(400).json({"isLoggedin": false})
 })
 
+// ******************************Projects related API******************************************
+// Endpoints are like /projects/oeration
+
 //Post Method
-router.post('/project/post', async (req, res) => {
+router.post('/projects/post', async (req, res) => {
+    console.log(req.body)
     const data = new Model({
         name: req.body.name,
-        usedTechnologies: req.body.usedTechnologies,
-        icon: req.body.icon,
+        usedTechnologies: req.body.mentionedTechnologies,
+        icon: req.body.iconName,
         logo: req.body.logo
     })
 
@@ -31,10 +35,9 @@ router.post('/project/post', async (req, res) => {
 })
 
 //Get all Method
-router.get('/', async (req, res) => {
+router.get('/projects/getAll', async (req, res) => {
     try {
         const data = await Model.find();
-        console.log(data)
         res.json({data});
     }
     catch (error) {
@@ -43,7 +46,7 @@ router.get('/', async (req, res) => {
 })
 
 //Get By Id Method 
-router.get('/getOne/:id', async (req, res) => {
+router.get('/projects/getOne/:id', async (req, res) => {
     try {
         const data = await Model.findById(req.params.id);
         res.json(data);
@@ -53,7 +56,7 @@ router.get('/getOne/:id', async (req, res) => {
 })
 
 //Update By Id Method 
-router.patch('update/:id', async (req, res) => {
+router.patch('/projects/update/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const updateData = req.body;
@@ -67,7 +70,7 @@ router.patch('update/:id', async (req, res) => {
 })
 
 //Delete By Id
-router.delete('/delete/:id', (req, res) => {
+router.delete('/projects/delete/:id', (req, res) => {
     try {
         const id = req.params.id;
         const data = Model.findByIdAndDelete(id)
@@ -77,5 +80,14 @@ router.delete('/delete/:id', (req, res) => {
         res.status(400).json({ message: error.massage })
     }
 })
+// ******************************Projects related API END******************************************
 
+// ******************************Blogs related API******************************************
+
+
+
+// ******************************Blogs related API END******************************************
 module.exports = router;
+
+
+

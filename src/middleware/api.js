@@ -11,7 +11,8 @@ const loggerMiddleware = function (store) {
 
             const actionPromise = fetch(`http://localhost:5000${request.path}`, {
                 method: request.op,
-                body: request.data && JSON.stringify(request.data)
+                headers: request.data && { 'Content-Type': 'application/json' },
+                body: request.data && JSON.stringify(request.data),
             });
 
             actionPromise.then(response => {
