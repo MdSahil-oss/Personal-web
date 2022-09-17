@@ -1,4 +1,6 @@
-import { FiSettings } from "react-icons/fi";
+import { AiOutlineSetting } from "react-icons/ai";
+import { HiOutlineBookOpen } from "react-icons/hi";
+
 
 let DashboardContents = () => {
     let handleSignout = () => {
@@ -15,7 +17,7 @@ let DashboardContents = () => {
             <div className=" w-full h-screen md:h-96 flex md:flex-row flex-col items-center justify-evenly text-center">
                 <a href="/" className="hover:bg-sky-400 hover:text-black space-y-3 bg-slate-700 md:w-1/3 lg:w-1/4 h-2/5 md:h-3/4 rounded-2xl flex flex-col pt-5 items-center">
                     <div className="">
-                        <FiSettings size={128} />
+                        <HiOutlineBookOpen size={128} />
                     </div>
                     <div className=" space-y-2">
                         <h2 className=" text-2xl font-bold">Manage Blogs</h2>
@@ -24,7 +26,7 @@ let DashboardContents = () => {
                 </a>
                 <a href="/dashboard/postproject" className="bg-slate-700 hover:bg-sky-400 hover:text-black space-y-3 md:w-1/3 lg:w-1/4 h-2/5 md:h-3/4 rounded-2xl flex flex-col pt-5 items-center">
                     <div className="">
-                        <FiSettings size={128} />
+                        <AiOutlineSetting size={128} />
                     </div>
                     <div className=" space-y-2">
                         <h2 className=" text-2xl font-bold">Manage Projects</h2>

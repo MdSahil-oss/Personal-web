@@ -40,22 +40,27 @@ let EditProjects = (props) => {
                         })}
                     </div>
                 </div>
-                <a href="/projects">
+                <div className='w-full flex flex-flow justify-evenly'>
                     <button className="bg-white border border-slate-900 text-slate-900 hover:bg-slate-700 hover:border-white hover:text-white w-32 h-8 rounded-2xl">
                         Edit
                     </button>
-                </a>
+                    <button className="bg-white border border-red-900 text-red-900 hover:bg-red-700  hover:text-white w-32 h-8 rounded-2xl">
+                        Delete
+                    </button>
+                </div>
             </div>)
     })
     return (
-        <>
-            {projectsBlocks}
+        <div className='w-full h-auto'>
+            <div className='flex flex-row justify-center'>
+                {projectsBlocks}
+            </div>
             <div className="m-auto w-fit space-x-2 pl-12 flex">
-                <button onClick={props.onCloseAddingEditing} className=" border border-red-700 w-32 h-9 rounded-3xl bg-red-700 text-black hover:bg-slate-900 hover:text-red-700">
+                <button onClick={props.onCloseAddingEditing} className=" border border-sky-700 w-32 h-9 rounded-3xl bg-sky-700 text-black hover:bg-slate-900 hover:text-sky-700">
                     Back
                 </button>
             </div>
-        </>
+        </div>
     )
 }
 

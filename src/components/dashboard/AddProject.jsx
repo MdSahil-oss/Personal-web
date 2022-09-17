@@ -32,6 +32,7 @@ const AddProject = (props) => {
             document.getElementById("name").value = "";
             document.getElementById("logo").value = "";
             document.getElementById("iconName").value = "";
+            setTechnology("");
         } catch (error) {
             console.error(error);
         } finally {
@@ -81,7 +82,7 @@ const AddProject = (props) => {
                     <button onClick={handleSubmit} className="hover:bg-slate-900 text-white border border-slate-700 bg-slate-700  hover:text-slate-700 w-32 h-9 rounded-2xl">
                         Push
                     </button>
-                    <button onClick={props.onCloseAddingEditing} className=" border border-red-700 w-32 h-9 rounded-3xl bg-red-700 text-black hover:bg-slate-900 hover:text-red-700">
+                    <button onClick={props.onCloseAddingEditing} className=" border border-sky-700 w-32 h-9 rounded-3xl bg-sky-700 text-black hover:bg-slate-900 hover:text-sky-700">
                         Back
                     </button>
                 </div>

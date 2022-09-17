@@ -58,7 +58,7 @@ class ManageProjects extends React.Component {
 
     render() {
         return (
-            <div className=" custom-scrolling-container p-1 w-screen h-screen flex flex-col items-start sm:static absolute">
+            <div className=" custom-scrolling-container basis-full overflow-y-scroll p-1 w-screen h-screen flex flex-col items-start sm:static absolute">
                 <div className=" space-x-1">
                     <button onClick={this.handleSignout} className=" border border-red-500 w-24 h-9 rounded-lg bg-red-500 text-black hover:bg-slate-900 hover:text-red-500">
                         Sign out
