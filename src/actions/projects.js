@@ -33,24 +33,24 @@ export const postProject = (url, data) => {
     }
 }
 
-export const patchProject = (url, id) => {
+export const patchProject = (url, data) => {
     return {
         type: PATCH_PROJECT,
         request: {
             op: 'patch',
-            path: `${url}/api/update`,
-            id: { id },
+            path: `${url}`,
+            data: { data },
         }
     }
 }
 
-export const deleteProject = (url, id) => {
+export const deleteProject = (url, data) => {
     return {
         type: DELETE_PROJECT,
         request: {
             op: 'delete',
-            path: `${url}/api/delete`,
-            id: { id },
+            path: `${url}`,
+            data: data,
         }
     }
 }
