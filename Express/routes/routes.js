@@ -70,9 +70,9 @@ router.patch('/projects/update/:id', async (req, res) => {
 })
 
 //Delete By Id
-router.delete('/projects/delete/:id', (req, res) => {
+router.delete('/projects/delete', (req, res) => {
     try {
-        const id = req.params.id;
+        const id = req.body.id;
         const data = Model.findByIdAndDelete(id)
         res.send(`Document with ${data.name} has been deleted...`)
     }
