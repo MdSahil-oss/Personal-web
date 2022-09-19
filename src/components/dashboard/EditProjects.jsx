@@ -1,26 +1,24 @@
 /* eslint-disable no-unused-expressions */
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import { getProjects, deleteProject } from '../../actions/projects'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 
 let EditProjects = (props) => {
-    let [projectsList, setProjectsList] = useState([])
+    let projectsList = [];
+    let dispatch = useDispatch();
+
     useEffect(() => {
-        props.getData('/api/projects/getAll')
-        if (props.projects["data"] !== undefined) {
-            setProjectsList(props.projects["data"])
-        }
-    }, [])
-    useEffect((id) => {
-        if (props.projects["data"] !== undefined) {
-            setProjectsList(props.projects["data"])
-        }
-    }, [props.projects])
+        dispatch(getProjects('/api/projects/getAll'))
+    }, [dispatch])
+
+    let gettingProjects = useSelector((state) => state.projects.data["data"]);
+    projectsList = gettingProjects === undefined ? [] : gettingProjects;
 
     let onDelete = (id) => {
         try {
             let data = { id };
-            deleteProject('/api/projects/delete', data);
+            dispatch(deleteProject('/api/projects/delete', data));
         } catch (error) {
             console.error("You got an error", error);
         } finally {
@@ -79,22 +77,4 @@ let EditProjects = (props) => {
     )
 }
 
-// Maps `state` to `props`:
-// These will be added as props to the component.
-function mapState(state) {
-    return { projects: state.projects.data }
-}
-
-// Maps `dispatch` to `props`:
-function mapDispatch(dispatch) {
-    return {
-        getData(url) {
-            dispatch(getProjects(url))
-        },
-        deleteDataById(url, data) {
-            dispatch(deleteProject(url, data));
-        }
-    }
-}
-
-export default connect(mapState, mapDispatch)(EditProjects);
+export default EditProjects;

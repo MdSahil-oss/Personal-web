@@ -6,10 +6,10 @@ require('dotenv').config()
 
 router.post('/login', (req, res) => {
     console.log(req.body.userId, req.body.password)
-    if(process.env.USER_ID === req.body.userId && process.env.PASSWORD === req.body.password) {
-        res.status(200).json({"isLoggedin": true})
+    if (process.env.USER_ID === req.body.userId && process.env.PASSWORD === req.body.password) {
+        res.status(200).json({ "isLoggedin": true })
     }
-    res.status(400).json({"isLoggedin": false})
+    res.status(400).json({ "isLoggedin": false })
 })
 
 // ******************************Projects related API******************************************
@@ -38,7 +38,7 @@ router.post('/projects/post', async (req, res) => {
 router.get('/projects/getAll', async (req, res) => {
     try {
         const data = await Model.find();
-        res.json({data});
+        res.json({ data });
     }
     catch (error) {
         res.status(500).json({ message: error.message });
@@ -73,7 +73,12 @@ router.patch('/projects/update/:id', async (req, res) => {
 router.delete('/projects/delete', (req, res) => {
     try {
         const id = req.body.id;
-        const data = Model.findByIdAndDelete(id)
+        // console.log("you sent an ID ", id);
+        const data = Model.findByIdAndDelete(id, function (err, docs) {
+            if (err) {
+                throw new Error(err)
+            }
+        })
         res.send(`Document with ${data.name} has been deleted...`)
     }
     catch (error) {

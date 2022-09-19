@@ -1,10 +1,10 @@
 import { useState } from "react"
-import { connect } from "react-redux";
+import { useDispatch } from 'react-redux'
 import { postProject } from '../../actions/projects'
 import React from "react";
 
 const AddProject = (props) => {
-
+    let dispatch = useDispatch();
     let [technologies, setTechnology] = useState("");
 
     let handleSubmit = () => {
@@ -27,7 +27,7 @@ const AddProject = (props) => {
                 logo: logo,
                 iconName: iconName
             }
-            props.postData('/api/projects/post', data)
+            dispatch(postProject('/api/projects/post', data))
             document.getElementById("mentionedTechnologies").innerText = ""
             document.getElementById("name").value = "";
             document.getElementById("logo").value = "";
@@ -82,7 +82,7 @@ const AddProject = (props) => {
                     <button onClick={handleSubmit} className="hover:bg-slate-900 text-white border border-slate-700 bg-slate-700  hover:text-slate-700 w-32 h-9 rounded-2xl">
                         Push
                     </button>
-                    <button onClick={props.onCloseAddingEditing} className=" border border-sky-700 w-32 h-9 rounded-3xl bg-sky-700 text-black hover:bg-slate-900 hover:text-sky-700">
+                    <button onClick={props.onCloseAddingEditing} className=" border border-sky-400 w-32 h-9 rounded-3xl bg-sky-400 text-black hover:bg-slate-900 hover:text-sky-400">
                         Back
                     </button>
                 </div>
@@ -91,19 +91,4 @@ const AddProject = (props) => {
     )
 }
 
-// Maps `state` to `props`:
-// These will be added as props to the component.
-function mapState(state) {
-    return { projects: state.projects.data }
-}
-
-// Maps `dispatch` to `props`:
-function mapDispatch(dispatch) {
-    return {
-        postData(url, data) {
-            dispatch(postProject(url, data))
-        }
-    }
-}
-
-export default connect(mapState, mapDispatch)(AddProject);
+export default AddProject;
