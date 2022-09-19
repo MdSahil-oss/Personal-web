@@ -1,12 +1,13 @@
 const express = require('express');
 // const { model } = require('mongoose');
 const router = express.Router();
-const Model = require('../model/model')
+const ProjectModel = require('../model/projectModel')
+const bcrypt = require('bcryptjs')
 require('dotenv').config()
 
-router.post('/login', (req, res) => {
-    console.log(req.body.userId, req.body.password)
-    if (process.env.USER_ID === req.body.userId && process.env.PASSWORD === req.body.password) {
+router.post('/login', async (req, res) => {
+    const encryptedUserPassword = await bcrypt.hash(process.env.PASSWORD, 10);
+    if (process.env.USER_ID === req.body.userId && await bcrypt.compare(req.body.password, encryptedUserPassword)) {
         res.status(200).json({ "isLoggedin": true })
     }
     res.status(400).json({ "isLoggedin": false })
@@ -18,7 +19,7 @@ router.post('/login', (req, res) => {
 //Post Method
 router.post('/projects/post', async (req, res) => {
     console.log(req.body)
-    const data = new Model({
+    const data = new ProjectModel({
         name: req.body.name,
         usedTechnologies: req.body.mentionedTechnologies,
         icon: req.body.iconName,
@@ -37,7 +38,7 @@ router.post('/projects/post', async (req, res) => {
 //Get all Method
 router.get('/projects/getAll', async (req, res) => {
     try {
-        const data = await Model.find();
+        const data = await ProjectModel.find();
         res.json({ data });
     }
     catch (error) {
@@ -48,7 +49,7 @@ router.get('/projects/getAll', async (req, res) => {
 //Get By Id Method 
 router.get('/projects/getOne/:id', async (req, res) => {
     try {
-        const data = await Model.findById(req.params.id);
+        const data = await ProjectModel.findById(req.params.id);
         res.json(data);
     } catch (error) {
         res.status(500).json(error);
@@ -62,7 +63,7 @@ router.patch('/projects/update/:id', async (req, res) => {
         const updateData = req.body;
         const options = { new: true };
 
-        const result = Model.findByIdAndUpdate(id, updateData, options);
+        const result = ProjectModel.findByIdAndUpdate(id, updateData, options);
         res.send(result);
     } catch (error) {
         res.status(500).json(error);
@@ -74,7 +75,7 @@ router.delete('/projects/delete', (req, res) => {
     try {
         const id = req.body.id;
         // console.log("you sent an ID ", id);
-        const data = Model.findByIdAndDelete(id, function (err, docs) {
+        const data = ProjectModel.findByIdAndDelete(id, function (err, docs) {
             if (err) {
                 throw new Error(err)
             }

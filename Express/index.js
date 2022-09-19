@@ -28,10 +28,6 @@ app.use(function (req, res, next) {
     next();
 });
 
-// app.get('/', (req, res) => {
-//     res.send("Hello world");
-// })
-
 app.use('/api', routes)
 
 app.listen(port, () => {
