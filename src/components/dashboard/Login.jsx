@@ -1,7 +1,7 @@
 import React from "react";
 import { login } from "../../actions/login";
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types';
+import PropTypes, { string } from 'prop-types';
 
 class Login extends React.Component {
     constructor(props) {
@@ -11,6 +11,13 @@ class Login extends React.Component {
 
     propTypes = {
         loginRequest: PropTypes.func,
+    }
+
+    UNSAFE_componentWillReceiveProps(nextProps) {
+        if (this.props.loginStateData.loading && nextProps.loginStateData.loaded) {
+            // Storing token in localstorage
+            localStorage.setItem("token", this.props.loginStateData.token)
+        }
     }
 
     handleLogin() {
@@ -25,7 +32,7 @@ class Login extends React.Component {
             console.error("Error occured in logging", err);
         }
         finally {
-            console.info("Logging request has been sent");
+            console.log(this.props.token)
         }
     }
 
@@ -64,7 +71,7 @@ class Login extends React.Component {
 
 export default connect(
     (state) => ({
-        // message: state.message
+        loginStateData: state.login,
     }),
     (dispatch) => ({
         loginRequest: (url, credentials) => {

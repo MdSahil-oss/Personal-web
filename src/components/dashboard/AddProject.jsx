@@ -13,7 +13,6 @@ const AddProject = (props) => {
         let logo = document.getElementById("logo").value;
         let iconName = document.getElementById("iconName").value;
         let mentionedTechnologies = mentionedTechnologiesString.split(', ');
-        // console.log(name, logo, iconName);
         try {
             if (mentionedTechnologies.length < 3) {
                 throw new Error("usedTechnologies must be greater than or equal to 3 technologies");

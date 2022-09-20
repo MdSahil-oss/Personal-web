@@ -1,6 +1,7 @@
 import { LOGIN } from "../constants/Contants";
 
 const initialState = {
+    token: {},
     post: {
         error: null,
         loaded: false,
@@ -28,7 +29,7 @@ const login = (state = initialState, action = {}) => {
         case `${LOGIN}_SUCCESS`:
             return {
                 ...state,
-                data: action.data,
+                token: action.data["token"],
                 [getRequestKey(action.type)]: {
                     loading: false,
                     loaded: true,
