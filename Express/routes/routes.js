@@ -1,17 +1,37 @@
 const express = require('express');
 // const { model } = require('mongoose');
+const jwt = require("jsonwebtoken");
+const auth = require("../middleware/auth");
 const router = express.Router();
 const ProjectModel = require('../model/projectModel')
 const bcrypt = require('bcryptjs')
 require('dotenv').config()
 
+router.post("/dashboard", auth, (req, res) => {
+    res.status(200).send("Congratulation! You have access to the Page");
+});
+
 router.post('/login', async (req, res) => {
-    const encryptedUserPassword = await bcrypt.hash(process.env.PASSWORD, 10);
-    console.log("you visited /login encrypted password is", encryptedUserPassword);
-    // if (process.env.USER_ID === req.body.userId && await bcrypt.compare(req.body.password, encryptedUserPassword)) {
-    //     res.status(200).json({ "isLoggedin": true })
-    // }
-    // res.status(400).json({ "isLoggedin": false })
+    try {
+        const encryptedUserPassword = await bcrypt.hash(process.env.PASSWORD, 10);
+        let user = {};
+        if (process.env.USER_ID === req.body.userId && await bcrypt.compare(req.body.password, encryptedUserPassword)) {
+            const token = jwt.sign(
+                { user_id: process.env.USER_ID },
+                process.env.TOKEN_KEY,
+                {
+                    expiresIn: "5h",
+                }
+            );
+            user.token = token;
+        } else {
+            throw new Error("Invalid Credentials")
+        }
+
+        return res.status(200).json(user);
+    } catch (err) {
+        return res.status(400).send(err);
+    }
 })
 
 // ******************************Projects related API******************************************

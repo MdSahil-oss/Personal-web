@@ -3,7 +3,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes/routes');
 
-
 const app = express();
 const host = 'localhost';
 const port = 5000;
