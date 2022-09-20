@@ -17,11 +17,11 @@ const initialState = {
     //     loaded: false,
     //     loading: false,
     // },
-    // delete: {
-    //     error: null,
-    //     loaded: false,
-    //     loading: false,
-    // },
+    delete: {
+        error: null,
+        loaded: false,
+        loading: false,
+    },
 };
 
 function getRequestKey(actionType) {
@@ -34,6 +34,7 @@ const projects = (state = initialState, action = {}) => {
         case `${GET_PROJECTS}_PENDING`:
         case `${GET_PROJECT}_PENDING`:
         case `${POST_PROJECT}_PENDING`:
+        case `${DELETE_PROJECT}_PENDING`:
             return {
                 ...state,
                 [getRequestKey(action.type)]: {
@@ -55,6 +56,15 @@ const projects = (state = initialState, action = {}) => {
                     error: null,
                 },
             };
+        case `${DELETE_PROJECT}_SUCCESS`:
+            return {
+                ...state,
+                [getRequestKey(action.type)]: {
+                    loading: false,
+                    loaded: true,
+                    error: action.error,
+                },
+            }
         case `${GET_PROJECTS}_FAIL`:
         case `${GET_PROJECT}_FAIL`:
             return {
@@ -67,6 +77,7 @@ const projects = (state = initialState, action = {}) => {
                 },
             };
         case `${POST_PROJECT}_FAIL`:
+        case `${DELETE_PROJECT} _FAIL`:
             return {
                 ...state,
                 [getRequestKey(action.type)]: {
