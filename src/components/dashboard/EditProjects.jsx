@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-expressions */
-// import { connect } from 'react-redux'
 import { getProjects, deleteProject } from '../../actions/projects'
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
@@ -9,7 +7,7 @@ let EditProjects = (props) => {
     let dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getProjects('/api/projects/getAll'))
+        dispatch(getProjects('/projects/getAll'))
     }, [dispatch])
 
     let gettingProjects = useSelector((state) => state.projects.data["data"]);
@@ -18,7 +16,7 @@ let EditProjects = (props) => {
     let onDelete = (id) => {
         try {
             let data = { id };
-            dispatch(deleteProject('/api/projects/delete', data));
+            dispatch(deleteProject('/projects/delete', data));
         } catch (error) {
             console.error("You got an error", error);
         } finally {

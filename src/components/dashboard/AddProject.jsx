@@ -27,7 +27,7 @@ const AddProject = (props) => {
                 logo: logo,
                 iconName: iconName
             }
-            dispatch(postProject('/api/projects/post', data))
+            dispatch(postProject('/projects/post', data))
             document.getElementById("mentionedTechnologies").innerText = ""
             document.getElementById("name").value = "";
             document.getElementById("logo").value = "";

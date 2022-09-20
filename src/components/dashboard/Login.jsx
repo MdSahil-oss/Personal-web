@@ -19,7 +19,7 @@ class Login extends React.Component {
             password: document.getElementById('password').value
         }
         try {
-            this.props.loginRequest('/api/login', credentials);
+            this.props.loginRequest('/login', credentials);
         }
         catch (err) {
             console.error("Error occured in logging", err);

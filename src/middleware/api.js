@@ -9,7 +9,7 @@ const loggerMiddleware = function (store) {
 
             next({ ...rest, type: `${type}_PENDING` });
 
-            const actionPromise = fetch(`http://localhost:5000${request.path}`, {
+            const actionPromise = fetch(`http://localhost:5000/api${request.path}`, {
                 method: request.op,
                 headers: request.data && { 'Content-Type': 'application/json' },
                 body: request.data && JSON.stringify(request.data),
