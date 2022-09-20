@@ -9,3 +9,5 @@ export const GET_BLOG = "GET_BLOG"
 export const POST_BlOG = "POST_BLOG"
 export const PATCH_BLOG = "PATCH_BLOG"
 export const DELETE_BLOG = "DELETE_BLOG"
+
+export const LOGIN = "LOGIN"

@@ -7,10 +7,11 @@ require('dotenv').config()
 
 router.post('/login', async (req, res) => {
     const encryptedUserPassword = await bcrypt.hash(process.env.PASSWORD, 10);
-    if (process.env.USER_ID === req.body.userId && await bcrypt.compare(req.body.password, encryptedUserPassword)) {
-        res.status(200).json({ "isLoggedin": true })
-    }
-    res.status(400).json({ "isLoggedin": false })
+    console.log("you visited /login encrypted password is", encryptedUserPassword);
+    // if (process.env.USER_ID === req.body.userId && await bcrypt.compare(req.body.password, encryptedUserPassword)) {
+    //     res.status(200).json({ "isLoggedin": true })
+    // }
+    // res.status(400).json({ "isLoggedin": false })
 })
 
 // ******************************Projects related API******************************************

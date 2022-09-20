@@ -1,4 +1,7 @@
 import React from "react";
+import { login } from "../../actions/login";
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
 
 class Login extends React.Component {
     constructor(props) {
@@ -6,34 +9,24 @@ class Login extends React.Component {
         this.handleLogin = this.handleLogin.bind(this)
     }
 
+    propTypes = {
+        loginRequest: PropTypes.func,
+    }
+
     handleLogin() {
-        let data = {
+        let credentials = {
             userId: document.getElementById('userId').value,
             password: document.getElementById('password').value
         }
-        localStorage.getItem("isLoggedIn") && localStorage.removeItem("isLoggedIn")
-        fetch('http://localhost:5000/api/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        })
-        .then(res => {
-            if(res.ok) {
-                return res.json();
-            }
-            throw res;
-        })
-        .then(jsonData => {
-            localStorage.setItem("isLoggedIn", jsonData["isLoggedin"])
-        })
-        .catch((err) => {
-            localStorage.setItem("isLoggedIn", false)
-            console.error("Error found", err);
-        })
-        .finally(() => {
-            // eslint-disable-next-line no-restricted-globals
-            location.reload()
-        })
+        try {
+            this.props.loginRequest('/api/login', credentials);
+        }
+        catch (err) {
+            console.error("Error occured in logging", err);
+        }
+        finally {
+            console.info("Logging request has been sent");
+        }
     }
 
     render() {
@@ -69,4 +62,13 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default connect(
+    (state) => ({
+        // message: state.message
+    }),
+    (dispatch) => ({
+        loginRequest: (url, credentials) => {
+            dispatch(login(url, credentials))
+        }
+    })
+)(Login);
