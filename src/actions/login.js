@@ -1,4 +1,4 @@
-import { LOGIN } from "../constants/Contants";
+import { DASHBOARD, LOGIN } from "../constants/Contants";
 
 export const login = (url, credentials) => {
     return {
@@ -7,6 +7,17 @@ export const login = (url, credentials) => {
             op: 'post',
             path: `${url}`,
             data: credentials
+        }
+    }
+}
+
+export const dashboard = (url, token) => {
+    return {
+        type: DASHBOARD,
+        request: {
+            op: 'post',
+            path: `${url}`,
+            data: token
         }
     }
 }

@@ -14,13 +14,13 @@ class Login extends React.Component {
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
-        if (this.props.loginStateData.loading && nextProps.loginStateData.loaded) {
-            // Storing token in localstorage
-            localStorage.setItem("token", this.props.loginStateData.token)
+        if (nextProps.loginStateData.token) {
+            localStorage.setItem("token", nextProps.loginStateData.token);
         }
     }
 
     handleLogin() {
+        console.log(this.props.loginStateData);
         let credentials = {
             userId: document.getElementById('userId').value,
             password: document.getElementById('password').value
@@ -32,7 +32,7 @@ class Login extends React.Component {
             console.error("Error occured in logging", err);
         }
         finally {
-            console.log(this.props.token)
+            // console.log(this.props.token)
         }
     }
 
