@@ -8,7 +8,7 @@ const bcrypt = require('bcryptjs')
 require('dotenv').config()
 
 router.post("/dashboard", auth, (req, res) => {
-    res.status(200).send({message: "Congratulation! You have access to the Page"});
+    res.status(200).send({ message: "Congratulation! You have access to the Page" });
 });
 
 router.post('/login', async (req, res) => {
@@ -30,7 +30,7 @@ router.post('/login', async (req, res) => {
 
         return res.status(200).json(user);
     } catch (err) {
-        return res.status(400).send(err);
+        return res.status(400).send({ message: err.message });
     }
 })
 
@@ -39,7 +39,6 @@ router.post('/login', async (req, res) => {
 
 //Post Method
 router.post('/projects/post', async (req, res) => {
-    console.log(req.body)
     const data = new ProjectModel({
         name: req.body.name,
         usedTechnologies: req.body.mentionedTechnologies,
@@ -48,8 +47,11 @@ router.post('/projects/post', async (req, res) => {
     })
 
     try {
-        const dataToSave = await data.save();
-        res.status(200).json(dataToSave);
+        if (await data.save()) {
+            const data = await ProjectModel.find();
+            res.status(200).json({ data });
+        }
+        // throw new Error("Cound not post project having data", data);
     }
     catch (error) {
         res.status(400).json({ message: error.message })
@@ -59,8 +61,11 @@ router.post('/projects/post', async (req, res) => {
 //Get all Method
 router.get('/projects/getAll', async (req, res) => {
     try {
-        const data = await ProjectModel.find();
-        res.json({ data });
+        let data = await ProjectModel.find();
+        if (data.length === 0) {
+            res.status(404).json({ message: "Projects not found" })
+        }
+        res.status(200).json({ data });
     }
     catch (error) {
         res.status(500).json({ message: error.message });
@@ -71,9 +76,13 @@ router.get('/projects/getAll', async (req, res) => {
 router.get('/projects/getOne/:id', async (req, res) => {
     try {
         const data = await ProjectModel.findById(req.params.id);
+        if (data.length === 0) {
+            res.status(404).json({ message: "Projects not found" })
+        }
+        res.status(200).json({ data });
         res.json(data);
     } catch (error) {
-        res.status(500).json(error);
+        res.status(500).json({ message: error.message });
     }
 })
 
@@ -87,7 +96,7 @@ router.patch('/projects/update/:id', async (req, res) => {
         const result = ProjectModel.findByIdAndUpdate(id, updateData, options);
         res.send(result);
     } catch (error) {
-        res.status(500).json(error);
+        res.status(500).json({ message: error.message });
     }
 })
 
@@ -96,12 +105,17 @@ router.delete('/projects/delete', (req, res) => {
     try {
         const id = req.body.id;
         // console.log("you sent an ID ", id);
-        const data = ProjectModel.findByIdAndDelete(id, function (err, docs) {
+        ProjectModel.findByIdAndDelete(id, async (err, docs) => {
             if (err) {
                 throw new Error(err)
             }
+            const data = await ProjectModel.find();
+            if (data.length === 0) {
+                res.status(404).json({ message: "Projects not found" })
+            }
+            res.status(200).json({ data });
         })
-        res.send(`Document with ${data.name} has been deleted...`)
+        // throw new Error("Cound not delete project having ID", id);
     }
     catch (error) {
         res.status(400).json({ message: error.massage })

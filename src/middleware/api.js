@@ -17,6 +17,8 @@ const loggerMiddleware = function (store) {
 
             actionPromise.then(response => {
                 response.json().then((data) => next({data, type: `${type}_SUCCESS` }));
+            }).catch(error => {
+                next({ error, type: `${type}_FAIL` });
             });
 
             return actionPromise;

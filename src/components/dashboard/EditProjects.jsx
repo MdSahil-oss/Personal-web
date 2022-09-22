@@ -10,7 +10,7 @@ let EditProjects = (props) => {
         dispatch(getProjects('/projects/getAll'))
     }, [dispatch])
 
-    let gettingProjects = useSelector((state) => state.projects.data["data"]);
+    let gettingProjects = useSelector((state) => state.projects.projects["data"]);
     projectsList = gettingProjects === undefined ? [] : gettingProjects;
 
     let onDelete = (id) => {

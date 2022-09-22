@@ -1,7 +1,7 @@
 import { GET_PROJECTS, GET_PROJECT, PATCH_PROJECT, POST_PROJECT, DELETE_PROJECT } from '../constants/Contants'
 
 const initialState = {
-    data: [],
+    projects: [],
     get: {
         error: null,
         loaded: false,
@@ -35,6 +35,7 @@ const projects = (state = initialState, action = {}) => {
         case `${GET_PROJECT}_PENDING`:
         case `${POST_PROJECT}_PENDING`:
         case `${DELETE_PROJECT}_PENDING`:
+            console.log(action.type)
             return {
                 ...state,
                 [getRequestKey(action.type)]: {
@@ -47,26 +48,21 @@ const projects = (state = initialState, action = {}) => {
         case `${GET_PROJECTS}_SUCCESS`:
         case `${GET_PROJECT}_SUCCESS`:
         case `${POST_PROJECT}_SUCCESS`:
+        case `${DELETE_PROJECT}_SUCCESS`:
+            console.log(action.type)
             return {
                 ...state,
-                data: action.data,
+                projects: action.data,
                 [getRequestKey(action.type)]: {
                     loading: false,
                     loaded: true,
                     error: null,
                 },
             };
-        case `${DELETE_PROJECT}_SUCCESS`:
-            return {
-                ...state,
-                [getRequestKey(action.type)]: {
-                    loading: false,
-                    loaded: true,
-                    error: action.error,
-                },
-            }
+
         case `${GET_PROJECTS}_FAIL`:
         case `${GET_PROJECT}_FAIL`:
+            console.log(action.type)
             return {
                 ...state,
                 projects: [],
@@ -76,8 +72,10 @@ const projects = (state = initialState, action = {}) => {
                     error: action.error,
                 },
             };
+
         case `${POST_PROJECT}_FAIL`:
         case `${DELETE_PROJECT} _FAIL`:
+            console.log(action.type)
             return {
                 ...state,
                 [getRequestKey(action.type)]: {
