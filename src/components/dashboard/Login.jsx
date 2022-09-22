@@ -1,7 +1,7 @@
 import React from "react";
 import { login } from "../../actions/login";
 import { connect } from 'react-redux'
-import PropTypes, { string } from 'prop-types';
+import PropTypes from 'prop-types';
 
 class Login extends React.Component {
     constructor(props) {
@@ -16,11 +16,12 @@ class Login extends React.Component {
     UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.loginStateData.token) {
             localStorage.setItem("token", nextProps.loginStateData.token);
+            window.location.reload();
         }
     }
 
     handleLogin() {
-        console.log(this.props.loginStateData);
+        // console.log(this.props.loginStateData);
         let credentials = {
             userId: document.getElementById('userId').value,
             password: document.getElementById('password').value

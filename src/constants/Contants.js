@@ -10,5 +10,5 @@ export const POST_BlOG = "POST_BLOG"
 export const PATCH_BLOG = "PATCH_BLOG"
 export const DELETE_BLOG = "DELETE_BLOG"
 
-export const LOGIN = "LOGIN"
-export const DASHBOARD = "DASHBOARD"
+export const CHECK_LOGIN = "CHECK_LOGIN"
+export const CHECK_DASHBOARD = "CHECK_DASHBOARD"

@@ -4,8 +4,8 @@ import { HiOutlineBookOpen } from "react-icons/hi";
 
 let DashboardContents = () => {
     let handleSignout = () => {
-        console.log("Handling Signing out")
-        localStorage.removeItem("isLoggedIn")
+        // console.log("Handling Signing out")
+        localStorage.removeItem("token")
         // eslint-disable-next-line no-restricted-globals
         location.reload()
     }

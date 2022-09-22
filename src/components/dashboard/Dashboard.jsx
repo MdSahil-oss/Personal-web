@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "./Login";
 import DashboardContents from "./DashboardContents";
-import { dashboard } from '../../actions/login';
+import { dashboard } from "../../actions/dashboard";
 import { connect } from "react-redux";
 
 class Dashboard extends React.Component {
@@ -14,16 +14,14 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount() {
-        this.handleLogin();
+        !(this.state.isloggedIn) && this.handleLogin();
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
-        // if (nextProps.dashboard.loaded) {
-        //     // localStorage.setItem("token", nextProps.loginStateData.token);
-        //     console.log("Token is correct")
-        //     this.setState({isloggedIn: true});
-        // }
-        console.log(nextProps)
+        if (nextProps.loginStatus.dashboard.check.loaded) {
+            console.log("props got changed")
+            this.setState({isloggedIn: true});
+        }
     }
 
     handleLogin = () => {
@@ -41,7 +39,7 @@ class Dashboard extends React.Component {
 }
 
 export default connect((state) => ({
-    loginStatus: state.dashboard,
+    loginStatus: state,
 }), (dispatch) => ({
     checkLoginStatus: (url, token) => {
         dispatch(dashboard(url, token))

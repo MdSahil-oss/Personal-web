@@ -1,7 +1,7 @@
-import { DASHBOARD } from "../constants/Contants";
+import { CHECK_DASHBOARD } from "../constants/Contants";
 
 const initialState = {
-    post: {
+    check: {
         error: null,
         loaded: false,
         loading: false,
@@ -15,7 +15,7 @@ function getRequestKey(actionType) {
 // eslint-disable-next-line import/no-anonymous-default-export
 const dashboard = (state = initialState, action = {}) => {
     switch (action.type) {
-        case `${DASHBOARD}_PENDING`:
+        case `${CHECK_DASHBOARD}_PENDING`:
             return {
                 ...state,
                 [getRequestKey(action.type)]: {
@@ -25,7 +25,7 @@ const dashboard = (state = initialState, action = {}) => {
                 },
             };
 
-        case `${DASHBOARD}_SUCCESS`:
+        case `${CHECK_DASHBOARD}_SUCCESS`:
             return {
                 ...state,
                 [getRequestKey(action.type)]: {
@@ -35,7 +35,7 @@ const dashboard = (state = initialState, action = {}) => {
                 },
             };
 
-        case `${DASHBOARD}_FAIL`:
+        case `${CHECK_DASHBOARD}_FAIL`:
             return {
                 ...state,
                 [getRequestKey(action.type)]: {

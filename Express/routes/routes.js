@@ -8,7 +8,7 @@ const bcrypt = require('bcryptjs')
 require('dotenv').config()
 
 router.post("/dashboard", auth, (req, res) => {
-    res.status(200).send("Congratulation! You have access to the Page");
+    res.status(200).send({message: "Congratulation! You have access to the Page"});
 });
 
 router.post('/login', async (req, res) => {

@@ -1,8 +1,8 @@
-import { LOGIN } from "../constants/Contants";
+import { CHECK_LOGIN } from "../constants/Contants";
 
 const initialState = {
     token: {},
-    post: {
+    check: {
         error: null,
         loaded: false,
         loading: false,
@@ -16,7 +16,7 @@ function getRequestKey(actionType) {
 // eslint-disable-next-line import/no-anonymous-default-export
 const login = (state = initialState, action = {}) => {
     switch (action.type) {
-        case `${LOGIN}_PENDING`:
+        case `${CHECK_LOGIN}_PENDING`:
             return {
                 ...state,
                 [getRequestKey(action.type)]: {
@@ -26,7 +26,7 @@ const login = (state = initialState, action = {}) => {
                 },
             };
 
-        case `${LOGIN}_SUCCESS`:
+        case `${CHECK_LOGIN}_SUCCESS`:
             return {
                 ...state,
                 token: action.data["token"],
@@ -37,7 +37,7 @@ const login = (state = initialState, action = {}) => {
                 },
             };
 
-        case `${LOGIN}_FAIL`:
+        case `${CHECK_LOGIN}_FAIL`:
             return {
                 ...state,
                 [getRequestKey(action.type)]: {
@@ -46,6 +46,7 @@ const login = (state = initialState, action = {}) => {
                     error: action.error,
                 },
             };
+
         default:
             return state;
     }
