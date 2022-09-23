@@ -1,7 +1,7 @@
 import { CHECK_LOGIN } from "../constants/Contants";
 
 const initialState = {
-    token: {},
+    token: null,
     check: {
         error: null,
         loaded: false,
@@ -40,7 +40,7 @@ const login = (state = initialState, action = {}) => {
         case `${CHECK_LOGIN}_FAIL`:
             return {
                 ...state,
-                token: undefined,
+                token: null,
                 [getRequestKey(action.type)]: {
                     loading: false,
                     loaded: false,

@@ -19,7 +19,6 @@ class Dashboard extends React.Component {
 
     UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.loginStatus.dashboard.check.loaded) {
-            console.log("props got changed")
             this.setState({isloggedIn: true});
         }
     }
@@ -27,7 +26,7 @@ class Dashboard extends React.Component {
     handleLogin = () => {
         let token = localStorage.getItem("token");
         if (token) {
-            console.log(token)
+            // console.log(token)
             this.props.checkLoginStatus('/dashboard', { token });
         }
     }
