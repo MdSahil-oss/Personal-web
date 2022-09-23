@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useDispatch } from 'react-redux'
 import { postProject } from '../../actions/projects'
 import React from "react";
+import { element } from "prop-types";
 
 const AddProject = (props) => {
     let dispatch = useDispatch();
@@ -23,9 +24,31 @@ const AddProject = (props) => {
             else if (iconName === "" && logo === "") {
                 throw new Error("One of IconName or Logo field mandotary to fill");
             }
+
+            let techs = [];
+            let eachElementOfArrayCanContain = Math.floor(mentionedTechnologies.length / 3)
+
+            for (let i = 0; i < (mentionedTechnologies.length - (mentionedTechnologies.length % 3)); i += eachElementOfArrayCanContain) {
+                // Have to improve it.
+                let arr = mentionedTechnologies.slice(i, (i + eachElementOfArrayCanContain));
+                let str = "";
+                arr.forEach((element,index) => {
+                    if(index === arr.length-1) {
+                        str = str + element
+                    } else {
+                        str = str + element + ", "
+                    }
+                })
+                str.trim()
+                techs.push(str);
+            }
+            mentionedTechnologies.length % 3 === 1 && (techs[0] += ", " + mentionedTechnologies[mentionedTechnologies.length - 1]);
+            mentionedTechnologies.length % 3 === 2 && (techs[1] += ", " + mentionedTechnologies[mentionedTechnologies.length - 2]);
+
+            console.log(techs);
             let data = {
                 name: name,
-                mentionedTechnologies: mentionedTechnologies,
+                mentionedTechnologies: techs,
                 logo: logo,
                 iconName: iconName
             }
@@ -35,7 +58,7 @@ const AddProject = (props) => {
             document.getElementById("logo").value = "";
             document.getElementById("iconName").value = "";
             setTechnology("");
-            console.info("Request has been sent")
+            console.info("Request has been sent successfully")
         } catch (error) {
             console.error(error);
         }
