@@ -18,7 +18,10 @@ const AddProject = (props) => {
                 throw new Error("usedTechnologies must be greater than or equal to 3 technologies");
             }
             else if (iconName !== "" && logo !== "") {
-                throw new Error("Only on of Logo and IconName field can be filled");
+                throw new Error("Only one of Logo and IconName field can be filled");
+            }
+            else if (iconName === "" && logo === "") {
+                throw new Error("One of IconName or Logo field mandotary to fill");
             }
             let data = {
                 name: name,
@@ -32,10 +35,9 @@ const AddProject = (props) => {
             document.getElementById("logo").value = "";
             document.getElementById("iconName").value = "";
             setTechnology("");
+            console.info("Request has been sent")
         } catch (error) {
             console.error(error);
-        } finally {
-            console.info("Request has been sent")
         }
     }
 
