@@ -14,7 +14,6 @@ router.post("/dashboard", auth, (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         const encryptedUserPassword = await bcrypt.hash(process.env.PASSWORD, 10);
-        let user = {};
         if (process.env.USER_ID === req.body.userId && await bcrypt.compare(req.body.password, encryptedUserPassword)) {
             const token = jwt.sign(
                 { user_id: process.env.USER_ID },
@@ -23,12 +22,11 @@ router.post('/login', async (req, res) => {
                     expiresIn: "5h",
                 }
             );
-            user.token = token;
+            return res.status(200).json({token});
         } else {
             throw new Error("Invalid Credentials")
         }
 
-        return res.status(200).json(user);
     } catch (err) {
         return res.status(400).send({ message: err.message });
     }

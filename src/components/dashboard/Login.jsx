@@ -21,7 +21,6 @@ class Login extends React.Component {
     }
 
     handleLogin() {
-        // console.log(this.props.loginStateData);
         let credentials = {
             userId: document.getElementById('userId').value,
             password: document.getElementById('password').value
@@ -31,9 +30,6 @@ class Login extends React.Component {
         }
         catch (err) {
             console.error("Error occured in logging", err);
-        }
-        finally {
-            // console.log(this.props.token)
         }
     }
 

@@ -40,6 +40,7 @@ const login = (state = initialState, action = {}) => {
         case `${CHECK_LOGIN}_FAIL`:
             return {
                 ...state,
+                token: undefined,
                 [getRequestKey(action.type)]: {
                     loading: false,
                     loaded: false,

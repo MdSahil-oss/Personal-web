@@ -2,7 +2,6 @@ import { useState } from "react"
 import { useDispatch } from 'react-redux'
 import { postProject } from '../../actions/projects'
 import React from "react";
-import { element } from "prop-types";
 
 const AddProject = (props) => {
     let dispatch = useDispatch();
