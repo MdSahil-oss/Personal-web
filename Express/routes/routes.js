@@ -46,10 +46,8 @@ router.post('/projects/post', async (req, res) => {
 
     try {
         if (await data.save()) {
-            const data = await ProjectModel.find();
-            res.status(200).json({ data });
+            res.status(200).json({ message: "Congratulations! Your project has been uploaded successfully" });
         }
-        // throw new Error("Cound not post project having data", data);
     }
     catch (error) {
         res.status(400).json({ message: error.message })
@@ -60,9 +58,6 @@ router.post('/projects/post', async (req, res) => {
 router.get('/projects/getAll', async (req, res) => {
     try {
         let data = await ProjectModel.find();
-        if (data.length === 0) {
-            res.status(404).json({ message: "Projects not found" })
-        }
         res.status(200).json({ data });
     }
     catch (error) {
@@ -102,18 +97,12 @@ router.patch('/projects/update/:id', async (req, res) => {
 router.delete('/projects/delete', (req, res) => {
     try {
         const id = req.body.id;
-        // console.log("you sent an ID ", id);
         ProjectModel.findByIdAndDelete(id, async (err, docs) => {
             if (err) {
                 throw new Error(err)
             }
-            const data = await ProjectModel.find();
-            if (data.length === 0) {
-                res.status(404).json({ message: "Projects not found" })
-            }
-            res.status(200).json({ data });
+            res.status(200).json({ message: `Successfully Deleted Project, had Id ${id}` });
         })
-        // throw new Error("Cound not delete project having ID", id);
     }
     catch (error) {
         res.status(400).json({ message: error.massage })

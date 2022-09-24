@@ -35,7 +35,7 @@ const projects = (state = initialState, action = {}) => {
         case `${GET_PROJECT}_PENDING`:
         case `${POST_PROJECT}_PENDING`:
         case `${DELETE_PROJECT}_PENDING`:
-            console.log(action.type)
+            // console.log(action.type)
             return {
                 ...state,
                 [getRequestKey(action.type)]: {
@@ -47,9 +47,8 @@ const projects = (state = initialState, action = {}) => {
 
         case `${GET_PROJECTS}_SUCCESS`:
         case `${GET_PROJECT}_SUCCESS`:
-        case `${POST_PROJECT}_SUCCESS`:
-        case `${DELETE_PROJECT}_SUCCESS`:
-            console.log(action.type)
+            // console.log(action.type);
+            // console.log("action.data is", action.data);
             return {
                 ...state,
                 projects: action.data,
@@ -60,9 +59,21 @@ const projects = (state = initialState, action = {}) => {
                 },
             };
 
+        case `${POST_PROJECT}_SUCCESS`:
+        case `${DELETE_PROJECT}_SUCCESS`:
+            // console.log(action.type);
+            return {
+                ...state,
+                [getRequestKey(action.type)]: {
+                    loading: false,
+                    loaded: true,
+                    error: null,
+                },
+            };
+
         case `${GET_PROJECTS}_FAIL`:
         case `${GET_PROJECT}_FAIL`:
-            console.log(action.type)
+            // console.log(action.type)
             return {
                 ...state,
                 projects: [],
@@ -75,7 +86,7 @@ const projects = (state = initialState, action = {}) => {
 
         case `${POST_PROJECT}_FAIL`:
         case `${DELETE_PROJECT} _FAIL`:
-            console.log(action.type)
+            // console.log(action.type)
             return {
                 ...state,
                 [getRequestKey(action.type)]: {

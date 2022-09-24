@@ -1,22 +1,26 @@
 import { getProjects, deleteProject } from '../../actions/projects'
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 
 let EditProjects = (props) => {
     let projectsList = [];
     let dispatch = useDispatch();
+    let [runGetProjects, setRunGetProjects] = useState(false);
 
     useEffect(() => {
         dispatch(getProjects('/projects/getAll'))
-    }, [dispatch])
+        setRunGetProjects(false)
+    }, [dispatch, runGetProjects])
 
     let gettingProjects = useSelector((state) => state.projects.projects["data"]);
     projectsList = gettingProjects === undefined ? [] : gettingProjects;
 
-    let onDelete = (id) => {
+    let onDelete = async (id) => {
         try {
             let data = { id };
-            dispatch(deleteProject('/projects/delete', data));
+            if (await dispatch(deleteProject('/projects/delete', data))) {
+                setRunGetProjects(true);
+            }
         } catch (error) {
             console.error("You got an error", error);
         } finally {
