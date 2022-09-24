@@ -26,7 +26,6 @@ class Dashboard extends React.Component {
     handleLogin = () => {
         let token = localStorage.getItem("token");
         if (token) {
-            // console.log(token)
             this.props.checkLoginStatus('/dashboard', { token });
         }
     }

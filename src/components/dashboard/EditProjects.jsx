@@ -22,9 +22,7 @@ let EditProjects = (props) => {
                 setRunGetProjects(true);
             }
         } catch (error) {
-            console.error("You got an error", error);
-        } finally {
-            console.info("your request of deletion has been sent");
+            alert(`You have encountered an Error ${error} with Element ID ${id}`);
         }
     }
 

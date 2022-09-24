@@ -44,7 +44,6 @@ const AddProject = (props) => {
             mentionedTechnologies.length % 3 === 1 && (techs[0] += ", " + mentionedTechnologies[mentionedTechnologies.length - 1]);
             mentionedTechnologies.length % 3 === 2 && (techs[1] += ", " + mentionedTechnologies[mentionedTechnologies.length - 2]);
 
-            console.log(techs);
             let data = {
                 name: name,
                 mentionedTechnologies: techs,
@@ -59,7 +58,7 @@ const AddProject = (props) => {
             setTechnology("");
             console.info("Request has been sent successfully")
         } catch (error) {
-            console.error(error);
+            alert(`You have encountered an Error ${error}`);
         }
     }
 

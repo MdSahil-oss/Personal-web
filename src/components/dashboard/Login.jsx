@@ -28,8 +28,9 @@ class Login extends React.Component {
         try {
             this.props.loginRequest('/login', credentials);
         }
-        catch (err) {
-            console.error("Error occured in logging", err);
+        catch (error) {
+            console.log(error)
+            alert(`You have encountered an Error ${error} `)
         }
     }
 

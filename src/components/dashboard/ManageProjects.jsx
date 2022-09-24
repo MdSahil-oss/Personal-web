@@ -18,9 +18,9 @@ class ManageProjects extends React.Component {
     }
 
     handleSignout() {
-        console.log("Handling Signing out")
-        localStorage.removeItem("isLoggedIn")
-        this.setState({ isLoggedIn: false });
+        localStorage.removeItem("token")
+        // eslint-disable-next-line no-restricted-globals
+        location.reload()
     }
 
     componentDidMount() {
@@ -41,8 +41,6 @@ class ManageProjects extends React.Component {
     }
 
     onEdit() {
-        console.log("Adding Off");
-        console.log("Editing On");
         this.setState({
             isAddingOn: false,
             isEditingOn: true
