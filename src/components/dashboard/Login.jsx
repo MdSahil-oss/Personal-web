@@ -30,7 +30,7 @@ class Login extends React.Component {
         }
         catch (error) {
             console.log(error)
-            alert(`You have encountered an Error ${error} `)
+            // alert(`You have encountered an Error ${error} `)
         }
     }
 
