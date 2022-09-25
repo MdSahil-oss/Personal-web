@@ -14,12 +14,16 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount() {
+        if (localStorage.getItem("isLoggedIn")) {
+            localStorage.removeItem("isLoggedIn")
+        }
         !(this.state.isloggedIn) && this.handleLogin();
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.loginStatus.dashboard.check.loaded) {
             this.setState({isloggedIn: true});
+            localStorage.setItem("isLoggedIn", "true");
         }
     }
 

@@ -19,18 +19,16 @@ class ManageProjects extends React.Component {
 
     handleSignout() {
         localStorage.removeItem("token")
+        localStorage.removeItem("isLoggedIn")
         // eslint-disable-next-line no-restricted-globals
         location.reload()
     }
 
     componentDidMount() {
-        // if(localStorage.getItem("isLoggedIn") && localStorage.getItem("isLoggedIn") === "true") {
-        //     this.setState({isLoggedIn: true});
-        // } else {
-        //     // eslint-disable-next-line no-restricted-globals
-        //     location.reload()
-        //     this.setState({isLoggedIn: false});
-        // }
+        if(!localStorage.getItem("isLoggedIn") || localStorage.getItem("isLoggedIn") !== "true") {
+            // this.setState({isLoggedIn: true});
+            window.location.replace("/dashboard")
+        }
     }
 
     onAdd() {
