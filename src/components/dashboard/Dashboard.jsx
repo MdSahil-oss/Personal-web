@@ -28,10 +28,7 @@ class Dashboard extends React.Component {
     }
 
     handleLogin = () => {
-        let token = localStorage.getItem("token");
-        if (token) {
-            this.props.checkLoginStatus('/dashboard', { token });
-        }
+        this.props.checkLoginStatus('/dashboard');
     }
 
     render() {
@@ -44,7 +41,7 @@ class Dashboard extends React.Component {
 export default connect((state) => ({
     loginStatus: state,
 }), (dispatch) => ({
-    checkLoginStatus: (url, token) => {
-        dispatch(dashboard(url, token))
+    checkLoginStatus: (url) => {
+        dispatch(dashboard(url))
     }
 }))(Dashboard);

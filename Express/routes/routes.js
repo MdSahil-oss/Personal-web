@@ -5,6 +5,9 @@ const auth = require("../middleware/auth");
 const router = express.Router();
 const ProjectModel = require('../model/projectModel')
 const bcrypt = require('bcryptjs')
+// import dayjs from "dayjs";
+const dayjs = require('dayjs')
+// const serialize = require('cookie')
 require('dotenv').config()
 
 router.post("/dashboard", auth, (req, res) => {
@@ -22,7 +25,16 @@ router.post('/login', async (req, res) => {
                     expiresIn: "5h",
                 }
             );
-            return res.status(200).json({token});
+            // res.setHeader('Set-Cookie', [`token=${token};`]);
+            const dataToSecure = { token };
+
+            res.cookie("secureCookie", JSON.stringify(dataToSecure), {
+                secure: process.env.NODE_ENV !== "development",
+                httpOnly: true,
+                expires: dayjs().add(5, "h").toDate(),
+            });
+            res.status(200).json({ message: "Congratulations! You've loggedin Succesfully." })
+            // res.send("Hello Cookie has been inserted succesfully");
         } else {
             throw new Error("Invalid Credentials")
         }

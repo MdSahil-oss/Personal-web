@@ -3,12 +3,11 @@ const jwt = require("jsonwebtoken");
 const config = process.env;
 
 const verifyToken = (req, res, next) => {
-    let token =
-        req.body.token || req.query.token || req.headers["x-access-token"];
+    let token = req.cookies.secureCookie
+    console.log("Cookies:", token);
 
     if (!token) {
-        console.log("Running verifytoken")
-        return res.status(403).send("A token is required for authentication");
+        return res.status(403).send({message: "A token is required for authentication"});
     }
 
     try {

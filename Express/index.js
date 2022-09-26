@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes/routes');
+var cookieParser = require('cookie-parser')
 
 const app = express();
 const host = 'localhost';
@@ -20,6 +21,7 @@ database.once('connected', () => {
 })
 
 app.use(express.json())
+app.use(cookieParser())
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');

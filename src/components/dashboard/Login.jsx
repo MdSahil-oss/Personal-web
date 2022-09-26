@@ -14,10 +14,10 @@ class Login extends React.Component {
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
-        if (nextProps.loginStateData.token) {
-            localStorage.setItem("token", nextProps.loginStateData.token);
+        if (nextProps.loginStateData.check.loaded && nextProps.loginStateData.check.error === null) {
+            console.log("Should get loggedIn");
             localStorage.setItem("isLoggedIn", "true");
-            window.location.reload();
+            // window.location.reload();
         }
     }
 
