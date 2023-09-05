@@ -14,6 +14,8 @@ spec:
       labels:
         app: personal-web
     spec:
+      # imagePullSecrets:
+      #   - name: secret-registry               # Secret created with private registry creadentials.
       containers:
         - name: personal-web
           image: 260009511791.dkr.ecr.us-east-1.amazonaws.com/personal-web:latest
@@ -21,7 +23,6 @@ spec:
             - containerPort: 3000
 
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -31,9 +32,9 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - name: http
-    protocol: TCP
-    port: 80
-    targetPort: 3000
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 3000
   selector:
     app: personal-web
