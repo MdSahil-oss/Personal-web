@@ -5,7 +5,7 @@ metadata:
   labels:
     app: personal-web
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: personal-web
@@ -14,8 +14,8 @@ spec:
       labels:
         app: personal-web
     spec:
-      # imagePullSecrets:
-      #   - name: secret-registry               # Secret created with private registry creadentials.
+      imagePullSecrets:
+        - name: secret-registry               # Secret created with private registry creadentials.
       containers:
         - name: personal-web
           image: 260009511791.dkr.ecr.us-east-1.amazonaws.com/personal-web:latest
