@@ -21,24 +21,3 @@ spec:
           image: mdsahiloss/personal-web:latest
           ports:
             - containerPort: 3000
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: personal-web-svc
-  labels:
-    app: personal-web
-spec:
-  type: ClusterIP
-  ports:
-    - name: http
-      protocol: TCP
-      port: 80
-      targetPort: 3000
-  selector:
-    app: personal-web
-
----
-# ***************************To enable AutoScaling execute the below command****************************
-# kubectl autoscale deployment personal-web-deployment --cpu-percent=80 --min=1 --max=10

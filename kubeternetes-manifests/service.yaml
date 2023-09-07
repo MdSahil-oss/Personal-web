@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: personal-web-svc
+  labels:
+    app: personal-web
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 3000
+  selector:
+    app: personal-web
